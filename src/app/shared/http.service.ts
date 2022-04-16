@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -19,13 +20,8 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  getData(authToken: any, orgName: any) {
-    this.URL = 'http://192.168.0.181:8080/v.0.1/polyrepo/analyser/org/' + orgName;
-    return this.http.get(this.URL, {
-      headers: new HttpHeaders({
-        Authorization: authToken,
-      }),
-    });
+  getData(orgName: any) {
+    return this.http.get(environment.baseUrl+'/org/'+orgName);
   }
 
   public getAuthentication(tokenValue: any) {
@@ -47,7 +43,7 @@ export class HttpService {
   }
 
   public getRepoList(authToken: any, orgLogin: any) {
-    this.repoListUrl = 'http://192.168.0.181:8080/v.0.1/polyrepo/analyser/org/' + orgLogin + '/repo';
+    this.repoListUrl = environment.baseUrl+'/org/' + orgLogin + '/repo';
     return this.http.get(this.repoListUrl, {
       headers: new HttpHeaders({
         Authorization: authToken,

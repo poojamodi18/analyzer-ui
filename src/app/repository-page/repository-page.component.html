@@ -1,13 +1,30 @@
 <mat-toolbar class="navigation">
-  Hello {{name}}!! welcome to spring angular application.
-<button (click)="logout()">Logout</button>
+  <!-- Hello {{name}}!! welcome to spring angular application.
+<button (click)="logout()">Logout</button> -->
 
   <img src="\assets\images\app_logo.png" alt="App Name" height="55px" />
   <a href="#" class="name">Polyrepo</a>
   <span class="example-spacer"></span>
-  <a href="{{ orgProfileData?.organization?.url }}" target="_blank" class="name" id="orgName">
-    {{ orgProfileData?.organization?.name }}</a><br />
-  <img src="{{ orgProfileData?.organization?.avatarUrl }}" alt="App Name" height="75%"/>
+  <form [formGroup]="loginForm">
+    <input type="text" id="searchOrganization" placeholder="Search Organization" matInput [matAutocomplete]="autoGroup" 
+      formControlName="organizationName" (keyup)="getOrganization()" size="30">
+    <mat-autocomplete #autoGroup="matAutocomplete">
+      <h1></h1>
+      <mat-option *ngFor="let x of organizationsData; let i = index" [value]="x.node.name"
+        (onSelectionChange)="changeName(i)">
+        <p>{{x.node.name}}</p>
+      </mat-option>
+    </mat-autocomplete>
+
+    <button class="btn btn-primary btn1" (click)="OrgSearch()" type="button" >
+      Search
+  </button>
+
+  </form>
+
+  <span class="example-spacer"></span>
+  <a href="" target="_blank" class="name" id="orgName">{{name}} </a><br/>
+  <img src="{{avatarUrl}}" alt="Avatar" height="75%"/>
 </mat-toolbar>
 
 <div>
@@ -16,7 +33,7 @@
       <div class="repoList">
         <app-show-repository></app-show-repository>
       </div>
-      <br/>
+      <br />
 
       <!-- filter options -->
       <div class="overflow-auto filtersettingdiv">
@@ -32,15 +49,20 @@
 
     <div class="col-9 content">
       <!-- issues analysis -->
-      <div
-        *ngIf="filterr.selectedOptions.selected[0]?.value == 'Issue Analysis'">
+      <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Issue Analysis'">
         <app-issueanalysis></app-issueanalysis>
       </div>
 
       <!-- pr analysis -->
       <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'PR Analysis'">
-        
+
         <app-pranalysis></app-pranalysis>
+      </div>
+
+      <!-- Branch Analysis -->
+      <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Branch Analysis'">
+
+        <app-branchanalysis></app-branchanalysis>
       </div>
     </div>
   </div>

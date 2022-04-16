@@ -31,6 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AuthHeaderInterceptor } from './auth-header.interceptor';
 import { CallbackComponent } from './callback/callback.component';
+import { BranchanalysisComponent } from './repository-page/branchanalysis/branchanalysis.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { CallbackComponent } from './callback/callback.component';
     ShowRepositoryComponent,
     AddrepositoryComponent, 
     IssueanalysisComponent,  
-    PranalysisComponent, CallbackComponent 
+    PranalysisComponent, CallbackComponent, BranchanalysisComponent 
   ],
   imports: [
     BrowserModule,

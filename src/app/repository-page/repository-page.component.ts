@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { SecurityService } from 'app/security.service';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
+import { FormControl, FormGroup } from '@angular/forms';
+import { HttpService } from 'app/shared/http.service';
 
 @Component({
   selector: 'app-repository-page',
@@ -14,18 +16,33 @@ import * as _ from 'lodash';
 export class RepositoryPageComponent implements OnInit {
 
   name: any;
+  avatarUrl: any;
+  orgName: any;
   authToken: any;
+  organizationsData: any;
+  isdisable: boolean = true;
   orgProfileData: any;
   orgLogin: any;
   repoNameList: any;
-  item:any;
-  filters: string[] = ['Issue Analysis', 'PR Analysis'];
+  item: any;
+  filters: string[] = ['Issue Analysis', 'PR Analysis', 'Branch Analysis'];
+  loginForm = new FormGroup({
+    organizationName: new FormControl({ value: ' ' }),
+  });
 
   constructor(private http: HttpClient, private securityService: SecurityService,
-    private router: Router) { }
+    private router: Router, private httpService: HttpService) { }
 
   ngOnInit(): void {
-    this.getUserInfo().subscribe(data => this.name = data.name);
+    this.getUserInfo().subscribe(data => {
+      if(data.name.length == 0){
+        this.name = data.login;
+      }else{
+        this.name = data.name;
+      }
+      this.avatarUrl = data.avatarUrl;
+    });
+    this.loginForm.controls['organizationName'].reset();
     // this.authToken = localStorage.getItem('token');
     // this.orgLogin = localStorage.getItem('orgLogin');
     // this.http
@@ -39,11 +56,38 @@ export class RepositoryPageComponent implements OnInit {
     return this.http.get(environment.baseUrl + '/v1/home');
   }
 
-  logout()
-  {
-    this.securityService.logout() .subscribe(() => {
+  logout() {
+    this.securityService.logout().subscribe(() => {
       this.securityService.removeToken();
       this.router.navigate(['/login']);
     });
+  }
+
+  OrgSearch() {
+
+  }
+
+  searchvisibility() {
+    if (this.orgName == '') {
+      this.isdisable = true;
+    }
+    else {
+      this.isdisable = false;
+    }
+  }
+
+  public getOrganization() {
+    this.orgName = this.loginForm.value.organizationName;
+    if (this.orgName != '') {
+      this.httpService.getData(this.orgName)
+        .subscribe((orgNameData: any) => {
+          this.organizationsData = _.merge([], orgNameData.edges);
+        });
+    }
+  }
+  changeName(event: any) {
+
+    this.orgLogin = this.organizationsData[event].node.login;
+    localStorage.setItem('orgLogin', this.orgLogin);
   }
 }

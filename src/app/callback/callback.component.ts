@@ -9,16 +9,18 @@ import {SecurityService} from "../security.service";
 })
 export class CallbackComponent implements OnInit {
 
+  isLoading = false;
+
   constructor(private route: ActivatedRoute,
     private router: Router,
     private securityService: SecurityService) { }
 
   ngOnInit(): void {
-    debugger
+    this.isLoading = true;
     this.route.queryParams.subscribe(p => {
       this.securityService.fetchToken(p.code, p.state).subscribe(data => {
         this.securityService.updateToken(data.accessToken);
-        debugger
+        this.isLoading = false;
         this.router.navigate(['/repository-page']);
       })
     })

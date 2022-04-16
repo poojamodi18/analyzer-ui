@@ -1,0 +1,49 @@
+.container {
+  width: 500px;
+  height: 450px;
+}
+
+.search {
+  margin: auto;
+  border: 1px solid rgb(193, 192, 192);
+  border-radius: 5px;
+  height: 35px;
+  padding: 10px;
+}
+
+::ng-deep {
+  .selected-list .c-list .c-token {
+    background: rgb(142, 197, 214) !important;
+  }
+
+  .selected-list .c-list .c-token .c-label {
+    color: black !important;
+  }
+}
+
+button.btn.trash-btn {
+  float: right;
+}
+
+.fa {
+  color: rgb(185, 57, 57);
+}
+
+.addedItems {
+  height: 60%;
+  border: 1px solid rgb(193, 192, 192);
+  border-radius: 5px;
+  margin-top: 5%;
+  margin-left: 0.3%;
+  margin-right: 0.3%;
+  display: block;
+  *display:inline;zoom:1;
+}
+
+.buttons {
+  margin-top: 5%;
+  float: right;
+}
+.btn-group-sm>.btn, .btn-sm{
+  padding: 0;
+}

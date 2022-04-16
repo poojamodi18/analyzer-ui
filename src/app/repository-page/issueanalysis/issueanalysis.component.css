@@ -1,0 +1,26 @@
+.criticalButton{
+    /* float: right; */
+    margin-left: 5%;
+}
+
+.avgTime{
+    margin : 0% 1%;
+}
+
+.criticalIssueList{
+    padding: 2% 2% 1% 1%;
+}
+
+.avgTimeList{
+    padding: 2% 2% 1% 1%;
+}
+
+.load{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background: white;
+}
+.mat-progress-spinner ::ng-deep circle {
+    stroke: #2A79FF;
+}

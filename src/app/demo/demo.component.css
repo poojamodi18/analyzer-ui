@@ -1,0 +1,83 @@
+.containerDemo{
+    display: flex;
+    justify-content: flex-end;
+    vertical-align: middle;
+}
+
+input{
+    margin-right: 20px;
+}
+.btn1{
+  padding-left: 40px;
+  padding-right:40px ;
+}
+.navbar-app {
+    color: white;
+    padding-left: 15px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.navbar-header {
+    padding-left: 50px;
+    padding-top: 7px;
+    font-size: x-large;
+}
+
+.navbar-default {
+    background-color: #261835;
+}
+
+.fa-1x {
+    font-size: 1.2em;
+}
+
+#home_search,
+#home_token {
+    margin-right: 10px;
+    border-radius: 7px;
+}
+
+
+.btn-home {
+    margin-bottom: 8px;
+}
+
+/* body */
+.a{
+    text-align: center;
+    font-family: bahnschrift;
+    font-size: 68px;
+    padding-top: 150px;
+}
+.b{
+    padding-top: 10px;
+}
+
+.containerBody{
+    display: flax;
+}
+
+/* cards */
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:left;
+  }
+
+  .block {
+    margin-left: 2rem;
+    color:black;
+    height: 350px;
+    border: 1.2px solid rgb(230, 230, 230);
+  }
+
+  .block:hover{
+    transform: scale(1.05);
+    box-shadow: 10px 10px 15px rgba(216, 216, 216, 0.9);
+  }
+  
+  .containerCards{
+      padding-bottom: 5%;
+  }

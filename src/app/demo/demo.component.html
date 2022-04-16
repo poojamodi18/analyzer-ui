@@ -1,0 +1,89 @@
+<div class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <img src="\assets\images\app_logo.png" alt="App Name" height=55px>
+            <a href="#" class="navbar-app">Polyrepo</a>
+        </div>
+        <div class="containerDemo">
+            <form>
+
+                <!--Token Input-->
+                <!-- <input type="text" placeholder="Token" formControlName="token" (blur)="getToken()" size="30"> -->
+
+                <!--Search Organization-->
+                <!-- <input type="text" id="searchOrganization" matInput [matAutocomplete]="autoGroup" placeholder="Search" formControlName="organizationName" (keyup)="getOrganization()" (blur)="searchvisibility()"  size="30">
+                <mat-autocomplete #autoGroup="matAutocomplete"><h1></h1>
+                    <mat-option *ngFor="let x of organizationsData; let i = index"  [value]="x.node.name" (onSelectionChange)="setOrgToLocal(i)">
+                        <p>{{x.node.name}}</p>
+                    </mat-option>
+                </mat-autocomplete> -->
+                
+                <!--Submit-->
+                <button class="btn btn-success btn1" (click)="login()" type="button" >
+                    Sign up / Login with GitHub
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Body -->
+<div class="containerBody">
+	<div class="row">
+		<div class="col a">Build for professional teams</div>
+		<div class="col b"><img src="assets\images\Asset_1.svg"></div>
+	</div>
+</div>
+
+<!-- cards -->
+<div class="containerCard">
+    <div class="row">
+    
+        <!-- Visualize process -->
+        <div class="col">
+        <mat-card class="example-card block">
+            <img mat-card-image src="assets\images\visualize_process.png" alt="Visualize process">
+            <mat-card-content>
+        
+            <h2 style="text-align: center;font-family: Cambria;"><b>Visualize process</b></h2>
+            
+            </mat-card-content> 
+        </mat-card>
+        </div>
+    
+        <!-- Filter Analysis -->
+        <div class="col">
+            <mat-card class="example-card block">
+                <img mat-card-image src="assets\images\filter_analysis.png" alt="Filter Analysis">
+                <mat-card-content>
+                    <h2 style="text-align: center;font-family: Cambria;"><b>Filter Analysis</b></h2>
+                </mat-card-content> 
+            </mat-card>
+        </div>
+    
+        <!-- PR Analysis -->
+        <div  class="col">
+            <mat-card class="example-card block">
+                <img mat-card-image src="assets\images\pull_request.png" alt="PR Analysis">
+                <mat-card-content>
+                    <h2 style="text-align: center;font-family: Cambria;"><b>PR Analysis</b></h2>
+                </mat-card-content> 
+            </mat-card>
+        </div>
+    
+        <!-- Settings Analysis -->
+        <div  class="col">
+            <mat-card class="example-card block">
+                <img mat-card-image src="assets\images\setting_analysis.jpg" alt="Settings Analysis">
+                <mat-card-content>
+                    <h2 style="text-align: center;font-family: Cambria;"><b>Settings Analysis</b></h2>
+                </mat-card-content> 
+            </mat-card>
+        </div>
+    </div>
+    </div>
+
+<!-- for routing -->
+<div>
+    <router-outlet></router-outlet>
+</div>

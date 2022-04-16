@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row overflow-auto itemsRow">
+    <div *ngFor="let i of nameOfItem; let index = index">
+      <label>{{i.name}}</label>
+      <button class="btn trash-btn btn-sm" (click)="remove(index)">
+        <i class="fa fa-trash"></i>
+      </button>
+    </div>
+  </div>
+  <div class="row butonRow">
+    <button class="btn btn-primary" (click)="openDialog()">Add</button>
+  </div>
+</div>
+

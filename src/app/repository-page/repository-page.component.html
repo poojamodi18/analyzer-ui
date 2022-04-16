@@ -1,0 +1,47 @@
+<mat-toolbar class="navigation">
+  Hello {{name}}!! welcome to spring angular application.
+<button (click)="logout()">Logout</button>
+
+  <img src="\assets\images\app_logo.png" alt="App Name" height="55px" />
+  <a href="#" class="name">Polyrepo</a>
+  <span class="example-spacer"></span>
+  <a href="{{ orgProfileData?.organization?.url }}" target="_blank" class="name" id="orgName">
+    {{ orgProfileData?.organization?.name }}</a><br />
+  <img src="{{ orgProfileData?.organization?.avatarUrl }}" alt="App Name" height="75%"/>
+</mat-toolbar>
+
+<div>
+  <div class="row">
+    <div class="col-3">
+      <div class="repoList">
+        <app-show-repository></app-show-repository>
+      </div>
+      <br/>
+
+      <!-- filter options -->
+      <div class="overflow-auto filtersettingdiv">
+        <mat-selection-list #filterr [multiple]="false">
+          <mat-list-option *ngFor="let filter of filters" [value]="filter">
+            <span style="font-size: 17px">
+              {{ filter }}
+            </span>
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+    </div>
+
+    <div class="col-9 content">
+      <!-- issues analysis -->
+      <div
+        *ngIf="filterr.selectedOptions.selected[0]?.value == 'Issue Analysis'">
+        <app-issueanalysis></app-issueanalysis>
+      </div>
+
+      <!-- pr analysis -->
+      <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'PR Analysis'">
+        
+        <app-pranalysis></app-pranalysis>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+
+.btn{
+    width: 20%;
+}
+
+.butonRow{
+    justify-content: end;
+    margin-top: 8%;
+    margin-bottom: 5%;
+}
+
+.itemsRow{
+    margin-top: 5%;
+    height: 300px;
+    display: block;
+    *display:inline;zoom:1;
+}
+.btn-group-sm>.btn, .btn-sm{
+    padding: 0;
+    outline:0;
+    width: min-content;
+}
+.btn-sm:focus {
+    outline:0;
+}
+button.btn.trash-btn {
+    float: right;
+}
+.fa {
+    color: rgb(185, 57, 57);
+  }

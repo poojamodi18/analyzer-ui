@@ -36,7 +36,6 @@ export class PranalysisComponent implements OnInit {
   displayedColumns2: string[] = ['title', 'createdAt', 'repository', 'authorLogin'];
   dataSource!: MatTableDataSource<pullRequestData>;
   unmergeddataSource!: MatTableDataSource<unmergedPRData>;
-  authToken: any;
   orgLogin: any;
   repoListObject: any;
   activityPRDays: any;
@@ -78,8 +77,6 @@ export class PranalysisComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.authToken = localStorage.getItem('token');
     this.orgLogin = localStorage.getItem('orgLogin');
 
   }
@@ -98,10 +95,12 @@ export class PranalysisComponent implements OnInit {
     this.repoListObject = { "repoNames": this.selectedRepoList };
     this.activityPRDays = this.fform.value.ActivityPrDay;
     if (this.selectedRepoList.length === 0) {
+      this.isLoading = false;
       this.alertbox();
+
     }
     else {
-      this.http.idlePr(this.authToken, this.orgLogin, this.activityPRDays, this.repoListObject)
+      this.http.idlePr(this.orgLogin, this.activityPRDays, this.repoListObject)
         .subscribe((PRData: any) => {
           this.prLastActivity = PRData;
           this.prLastActivity = _.merge([], this.prLastActivity.search.nodes);
@@ -129,14 +128,16 @@ export class PranalysisComponent implements OnInit {
     this.repoListObject = { "repoNames": this.selectedRepoList };
     this.unmergedPRDays = this.fform2.value.MergePrDay;
     if (this.selectedRepoList.length === 0) {
+      this.isLoading = false;
       this.alertbox();
     }
     else {
-      this.http.unmergedpr(this.authToken, this.orgLogin, this.unmergedPRDays, this.repoListObject)
+      this.http.unmergedpr(this.orgLogin, this.unmergedPRDays, this.repoListObject)
         .subscribe((UnMergedData: any) => {
 
           this.unmergedPRActivity = UnMergedData;
           this.unmergedPRActivity = _.merge([], this.unmergedPRActivity.search.nodes);
+          
           this.unmergedPRActivity = this.unmergedPRActivity.map((x: any) => {
             return {
               title: x.title,

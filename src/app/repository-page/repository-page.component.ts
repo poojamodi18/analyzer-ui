@@ -17,6 +17,7 @@ export class RepositoryPageComponent implements OnInit {
 
   name: any;
   avatarUrl: any;
+  url: any;
   orgName: any;
   authToken: any;
   organizationsData: any;
@@ -25,7 +26,24 @@ export class RepositoryPageComponent implements OnInit {
   orgLogin: any;
   repoNameList: any;
   item: any;
-  filters: string[] = ['Issue Analysis', 'PR Analysis', 'Branch Analysis'];
+  // filters: string[] = ['Issue Analysis', 'PR Analysis', 'Branch Analysis'];
+  filters: {
+    name: string;
+    selected: boolean;
+}[] = [
+    {
+        name: 'Issue Analysis',
+        selected: false
+    },
+    {
+        name: 'PR Analysis',
+        selected: true
+    },
+    {
+        name: 'Branch Analysis',
+        selected: false
+    },
+];
   loginForm = new FormGroup({
     organizationName: new FormControl({ value: ' ' }),
   });
@@ -41,6 +59,7 @@ export class RepositoryPageComponent implements OnInit {
         this.name = data.name;
       }
       this.avatarUrl = data.avatarUrl;
+      this.url = data.url;
     });
     this.loginForm.controls['organizationName'].reset();
     // this.authToken = localStorage.getItem('token');

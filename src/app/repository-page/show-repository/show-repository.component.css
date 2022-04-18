@@ -25,6 +25,8 @@
 }
 button.btn.trash-btn {
     float: right;
+    padding: 0;
+    height: 10px;
 }
 .fa {
     color: rgb(185, 57, 57);

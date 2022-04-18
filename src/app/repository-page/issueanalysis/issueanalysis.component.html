@@ -3,8 +3,8 @@
     <mat-tab label="Critical Issue">
         <div class="criticalIssueList">
             <form [formGroup]="criticalIssuesForm" >
-                <h6>This will list all the Open Priority-1 issues across selected repositories open since  
-                    <input type="number" formControlName="criticalIssues" > days.<button class="btn btn-primary criticalButton" (click)="criticalIssueList()">List</button></h6>  
+                <h4>This will list all the Open Priority-1 issues across selected repositories open since  
+                    <input type="number" formControlName="criticalIssues" > days.<button class="btn btn-primary criticalButton" (click)="criticalIssueList()">List</button></h4>  
             </form>
         </div>
 
@@ -14,7 +14,7 @@
           </mat-form-field>
           
         <div class="mat-elevation-z8 ">
-            <table mat-table [dataSource]="dataSource" matSort style="width:1090px;">
+            <table mat-table [dataSource]="dataSource" matSort style="width:100%;">
           
               <!-- Issue Column -->
               <ng-container matColumnDef="title">
@@ -63,9 +63,9 @@
     <mat-tab label="Average Resolving Time">
         <div class="avgTimeList">
             <form [formGroup]="AvgTimeForm">
-                <h6>How much average time needed for resolving 
+                <h4>How much average time needed for resolving 
                     <button class="btn btn-primary btn-sm avgTime" (click)="show = 'P1'; avg1()">Priority-1</button>or
-                    <button class="btn btn-primary btn-sm avgTime" (click)="show = 'P2'; avg2()">Priority-2</button> issues?</h6>   
+                    <button class="btn btn-primary btn-sm avgTime" (click)="show = 'P2'; avg2()">Priority-2</button> issues?</h4>   
             </form>
         </div>
         <p *ngIf="show == 'P1'">{{this.priorityOne}}</p>

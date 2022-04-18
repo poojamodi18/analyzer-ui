@@ -13,7 +13,6 @@ export class HttpService {
   private repoSearchUrl = '';
   private idlePrUrl='';
   private unmergedPrUrl='';
-  private tokenURL = 'http://192.168.0.181:8080/v.0.1/polyrepo/analyser/auth/';
   private criticalIssue = '';
   private AvgTimeP1 = '';
   private AvgTimeP2 = '';
@@ -24,57 +23,39 @@ export class HttpService {
     return this.http.get(environment.baseUrl+'/org/'+orgName);
   }
 
-  public getAuthentication(tokenValue: any) {
-    return this.http.get(this.tokenURL, {
-      headers: new HttpHeaders({
-        Authorization: tokenValue,
-      }),
-    });
-  }
-
   public getOrgProfile(authToken: any, orgLogin: any) {
-    this.OrgProfileUrl = 'http://192.168.0.181:8080/v.0.1/polyrepo/analyser/org/' + orgLogin + '/orgProfile';
+    this.OrgProfileUrl = environment.baseUrl+'/org/' + orgLogin + '/orgProfile';
     return this.http.get(this.OrgProfileUrl, {
-
       headers: new HttpHeaders({
         Authorization: authToken,
       }),
     });
   }
 
-  public getRepoList(authToken: any, orgLogin: any) {
+  public getRepoList(orgLogin: any) {
     this.repoListUrl = environment.baseUrl+'/org/' + orgLogin + '/repo';
-    return this.http.get(this.repoListUrl, {
-      headers: new HttpHeaders({
-        Authorization: authToken,
-      }),
-    });
+    return this.http.get(this.repoListUrl);
   }
 
   //create a url to fetch next page data
-  public getNextPageRepoList(authToken: any, nextPageHash: any, orgLogin: any) {
-    this.repoListUrl = 'http://192.168.0.181:8080/v.0.1/polyrepo/analyser/org/' + orgLogin + '/repo/more';
+  public getNextPageRepoList(nextPageHash: any, orgLogin: any) {
+    this.repoListUrl = environment.baseUrl+'/org/' + orgLogin + '/repo/more';
     return this.http.get(this.repoListUrl, {
       headers: new HttpHeaders({
-        Authorization: authToken,
         EndCursor: nextPageHash
       }),
     });
   }
 
 
-  public getRepositoryLisByName(authToken: any, orgLogin: any, repoName: any) {
-    this.repoSearchUrl = 'http://192.168.0.181:8080/v.0.1/polyrepo/analyser/org/'+orgLogin+'/repo/'+repoName;
-    return this.http.get(this.repoSearchUrl,{
-      headers: new HttpHeaders({
-        Authorization: authToken,
-      }),
-    });
+  public getRepositoryLisByName(orgLogin: any, repoName: any) {
+    this.repoSearchUrl = environment.baseUrl+'/org/'+orgLogin+'/repo/'+repoName;
+    return this.http.get(this.repoSearchUrl);
   }
   
   // critical issues
   public getcriticalIssue(authToken: any, orgLogin: any, days: any,repoListObject:any){
-    this.criticalIssue = 'http://192.168.0.182:8080/v.0.1/polyrepo/analyser/org/'+orgLogin+'/repo/issuesWithPriority1/openSinceBefore/'+days ;
+    this.criticalIssue = environment.baseUrl+'/org/'+orgLogin+'/repo/issuesWithPriority1/openSinceBefore/'+days ;
     const httpOptions = {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
@@ -86,38 +67,26 @@ export class HttpService {
 
   // average resolving time for Priority-1 isuues
   public getAvgTimeP1(authToken: any, orgLogin: any){
-    this.AvgTimeP1 = 'http://192.168.0.182:8080/v.0.1/polyrepo/analyser/org/' + orgLogin + '/averageResolvingTimeOfP1Issues';
+    this.AvgTimeP1 = environment.baseUrl+'/org/' + orgLogin + '/averageResolvingTimeOfP1Issues';
     return this.http.get(this.AvgTimeP1, {headers: new HttpHeaders({Authorization: authToken})});
   }
 
     // average resolving time for Priority-2 isuues
   public getAvgTimeP2(authToken: any, orgLogin: any){
-    this.AvgTimeP2 = 'http://192.168.0.182:8080/v.0.1/polyrepo/analyser/org/' + orgLogin + '/averageResolvingTimeOfP2Issues';
+    this.AvgTimeP2 = environment.baseUrl+'/org/' + orgLogin + '/averageResolvingTimeOfP2Issues';
     return this.http.get(this.AvgTimeP2, {headers: new HttpHeaders({Authorization: authToken})});
   }
 
-  public idlePr(authToken:any,orgLogin:any,days:any,jsonArr:any): Observable<any>
-  {
-    
-    this.idlePrUrl='http://192.168.0.181:8080/v.0.1/polyrepo/analyser/org/'+orgLogin+'/repo/prLastUpdate/'+days;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Access-Control-Allow-Origin': '*',
-        'Authorization': authToken,
-      })
-    };
-    return this.http.post<any>(this.idlePrUrl, jsonArr, httpOptions);
+  public idlePr(orgLogin:any,days:any,jsonArr:any): Observable<any>
+  { 
+    this.idlePrUrl=environment.baseUrl+'/org/'+orgLogin+'/repo/prLastUpdate/'+days;
+    return this.http.post<any>(this.idlePrUrl, jsonArr);
   }
-  public unmergedpr(authToken:any,orgLogin:any,days:any,jsonArr:any): Observable<any>
+
+  public unmergedpr(orgLogin:any,days:any,jsonArr:any): Observable<any>
   {    
-    this.unmergedPrUrl='http://192.168.0.181:8080/v.0.1/polyrepo/analyser/org/'+orgLogin+'/repo/prUnMerged/'+days;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Access-Control-Allow-Origin': '*',
-        'Authorization': authToken,
-      })
-    };
-    return this.http.post<any>(this.unmergedPrUrl, jsonArr, httpOptions);
+    this.unmergedPrUrl=environment.baseUrl+'/org/'+orgLogin+'/repo/prUnMerged/'+days;
+    return this.http.post<any>(this.unmergedPrUrl, jsonArr);
   }
 
 

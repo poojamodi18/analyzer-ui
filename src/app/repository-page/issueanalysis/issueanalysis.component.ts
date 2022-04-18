@@ -78,6 +78,7 @@ export class IssueanalysisComponent implements OnInit {
     this.selectedRepoList = this.util.getCollectiveRepoData();
     this.repoListObject = { repoNames: this.selectedRepoList };
     if (this.selectedRepoList.length === 0) {
+      this.isLoading = false;
       this.toastr.error('Please select repository', 'No Repository', {
         positionClass: 'toast-top-center',
         closeButton: true,

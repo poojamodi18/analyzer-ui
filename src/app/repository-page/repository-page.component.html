@@ -23,7 +23,7 @@
   </form>
 
   <span class="example-spacer"></span>
-  <a href="" target="_blank" class="name" id="orgName">{{name}} </a><br/>
+  <a href="{{url}}" target="_blank" class="name" id="orgName">{{name}} </a><br/>
   <img src="{{avatarUrl}}" alt="Avatar" height="75%"/>
 </mat-toolbar>
 
@@ -38,9 +38,9 @@
       <!-- filter options -->
       <div class="overflow-auto filtersettingdiv">
         <mat-selection-list #filterr [multiple]="false">
-          <mat-list-option *ngFor="let filter of filters" [value]="filter">
+          <mat-list-option *ngFor="let filter of filters" [value]="filter.name" [selected]="filter.selected">
             <span style="font-size: 17px">
-              {{ filter }}
+              {{ filter.name }}
             </span>
           </mat-list-option>
         </mat-selection-list>

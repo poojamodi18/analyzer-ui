@@ -1,12 +1,10 @@
 <mat-toolbar class="navigation">
-  <!-- Hello {{name}}!! welcome to spring angular application.
-<button (click)="logout()">Logout</button> -->
 
   <img src="\assets\images\app_logo.png" alt="App Name" height="55px" />
   <a href="#" class="name">Polyrepo</a>
   <span class="example-spacer"></span>
   <form [formGroup]="loginForm">
-    <input type="text" id="searchOrganization" placeholder="Search Organization" matInput [matAutocomplete]="autoGroup" 
+    <input type="text" class = "orgName" id="searchOrganization" placeholder="Search Organization" matInput [matAutocomplete]="autoGroup" 
       formControlName="organizationName" (keyup)="getOrganization()" size="30">
     <mat-autocomplete #autoGroup="matAutocomplete">
       <h1></h1>
@@ -16,7 +14,7 @@
       </mat-option>
     </mat-autocomplete>
 
-    <button class="btn btn-primary btn1" (click)="OrgSearch()" type="button" >
+    <button class="btn btn-primary btn1"  type="button" >
       Search
   </button>
 
@@ -28,13 +26,9 @@
 </mat-toolbar>
 
 <div>
-  <div class="row">
+  <div class="row" >
     <div class="col-3">
-      <div class="repoList">
-        <app-show-repository></app-show-repository>
-      </div>
-      <br />
-
+     
       <!-- filter options -->
       <div class="overflow-auto filtersettingdiv">
         <mat-selection-list #filterr [multiple]="false">
@@ -45,9 +39,21 @@
           </mat-list-option>
         </mat-selection-list>
       </div>
+
+      <br />
+
+      <div class="repoList">
+        <app-show-repository></app-show-repository>
+      </div>
     </div>
 
     <div class="col-9 content">
+
+      <!-- Dashboard -->
+      <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Dashboard'">
+        <app-dashboard></app-dashboard>
+      </div>
+
       <!-- issues analysis -->
       <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Issue Analysis'">
         <app-issueanalysis></app-issueanalysis>

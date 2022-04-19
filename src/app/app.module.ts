@@ -32,6 +32,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AuthHeaderInterceptor } from './auth-header.interceptor';
 import { CallbackComponent } from './callback/callback.component';
 import { BranchanalysisComponent } from './repository-page/branchanalysis/branchanalysis.component';
+import { DashboardComponent } from './repository-page/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { BranchanalysisComponent } from './repository-page/branchanalysis/branch
     ShowRepositoryComponent,
     AddrepositoryComponent, 
     IssueanalysisComponent,  
-    PranalysisComponent, CallbackComponent, BranchanalysisComponent 
+    PranalysisComponent, CallbackComponent, BranchanalysisComponent, DashboardComponent 
   ],
   imports: [
     BrowserModule,

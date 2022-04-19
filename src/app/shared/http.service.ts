@@ -16,6 +16,7 @@ export class HttpService {
   private criticalIssue = '';
   private AvgTimeP1 = '';
   private AvgTimeP2 = '';
+  private defaultBranchUrl = '';
 
   constructor(private http: HttpClient) { }
 
@@ -89,5 +90,9 @@ export class HttpService {
     return this.http.post<any>(this.unmergedPrUrl, jsonArr);
   }
 
+  public defaultBranch(orgLogin:any, jsonArr:any): Observable<any>{
+    this.defaultBranchUrl = environment.baseUrl+'/org/'+orgLogin+'/defaultbranch';
+    return this.http.post<any>(this.defaultBranchUrl,jsonArr);
+  }
 
 }

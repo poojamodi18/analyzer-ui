@@ -1,35 +1,40 @@
-.containerDemo{
+.containerDemo {
     display: flex;
     justify-content: flex-end;
     vertical-align: middle;
 }
 
-input{
+input {
     margin-right: 20px;
 }
-.btn1{
-  padding-left: 40px;
-  padding-right:40px ;
+
+.btn1 {
+    padding-left: 40px;
+    padding-right: 40px;
 }
+
 .navbar-app {
-    color: white;
+    color: #664983;
     padding-left: 15px;
     text-decoration: none;
     text-align: center;
+    font-size: 150%;
+    font-family: "Bahnschrift";
 }
-
-.navbar-header {
-    padding-left: 50px;
-    padding-top: 7px;
-    font-size: x-large;
-}
-
-.navbar-default {
-    background-color: #261835;
+b{
+    font-family: "Bahnschrift";
 }
 
 .fa-1x {
     font-size: 1.2em;
+}
+
+mat-toolbar {
+    box-shadow: 0px 1px 10px rgba(161, 161, 161, 0.9);
+}
+
+.example-spacer {
+    flex: 1 1 auto;
 }
 
 #home_search,
@@ -38,23 +43,25 @@ input{
     border-radius: 7px;
 }
 
-
 .btn-home {
     margin-bottom: 8px;
 }
 
 /* body */
-.a{
+.a {
     text-align: center;
     font-family: bahnschrift;
     font-size: 68px;
-    padding-top: 150px;
+    padding-top: 120px;
+    white-space: normal;
 }
-.b{
+
+.b {
+    padding-left: 10%;
     padding-top: 10px;
 }
 
-.containerBody{
+.containerBody {
     display: flax;
 }
 
@@ -63,21 +70,21 @@ input{
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content:left;
-  }
+    justify-content: left;
+}
 
-  .block {
+.block {
     margin-left: 2rem;
-    color:black;
-    height: 350px;
+    color: black;
+    height: 280px;
     border: 1.2px solid rgb(230, 230, 230);
-  }
+}
 
-  .block:hover{
+.block:hover {
     transform: scale(1.05);
     box-shadow: 10px 10px 15px rgba(216, 216, 216, 0.9);
-  }
-  
-  .containerCards{
-      padding-bottom: 5%;
-  }
+}
+
+.containerCards {
+    padding-bottom: 5%;
+}

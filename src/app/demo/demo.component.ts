@@ -35,6 +35,7 @@ export class DemoComponent implements OnInit {
 
   login(){
     this.securityService.login();
+    
   }
 
   // get token and validated it

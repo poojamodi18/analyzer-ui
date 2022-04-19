@@ -1,9 +1,9 @@
 
 .btn{
-    width: 20%;
+    width: max-content;
 }
 
-.butonRow{
+.buttonRow{
     justify-content: end;
     margin-top: 8%;
     margin-bottom: 5%;
@@ -30,4 +30,9 @@ button.btn.trash-btn {
 }
 .fa {
     color: rgb(185, 57, 57);
+  }
+  ::ng-deep .orgName{
+    width: 60%;
+    border-radius: 3px;
+    border: 1px solid gray;
   }

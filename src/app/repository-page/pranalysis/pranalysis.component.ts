@@ -77,8 +77,6 @@ export class PranalysisComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.orgLogin = localStorage.getItem('orgLogin');
-
   }
   //toast alert
   alertbox() {
@@ -90,6 +88,7 @@ export class PranalysisComponent implements OnInit {
   }
   //idle pr 
   noActivityPR() {
+    this.orgLogin = localStorage.getItem('orgLogin');
     this.isLoading = true;
     this.selectedRepoList = this.util.getCollectiveRepoData();
     this.repoListObject = { "repoNames": this.selectedRepoList };
@@ -123,6 +122,7 @@ export class PranalysisComponent implements OnInit {
   }
   //for merged pr
   unmergedPr() {
+    this.orgLogin = localStorage.getItem('orgLogin');
     this.isLoading = true;
     this.selectedRepoList = this.util.getCollectiveRepoData();
     this.repoListObject = { "repoNames": this.selectedRepoList };

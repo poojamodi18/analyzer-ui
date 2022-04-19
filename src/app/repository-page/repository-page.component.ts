@@ -18,6 +18,7 @@ export class RepositoryPageComponent implements OnInit {
   name: any;
   avatarUrl: any;
   url: any;
+  userId: any;
   orgName: any;
   authToken: any;
   organizationsData: any;
@@ -32,17 +33,22 @@ export class RepositoryPageComponent implements OnInit {
     selected: boolean;
 }[] = [
     {
+        name: 'Dashboard',
+        selected: true
+    },
+    {
         name: 'Issue Analysis',
         selected: false
     },
     {
         name: 'PR Analysis',
-        selected: true
+        selected: false
     },
     {
         name: 'Branch Analysis',
         selected: false
     },
+    
 ];
   loginForm = new FormGroup({
     organizationName: new FormControl({ value: ' ' }),
@@ -60,6 +66,8 @@ export class RepositoryPageComponent implements OnInit {
       }
       this.avatarUrl = data.avatarUrl;
       this.url = data.url;
+      this.userId = data.id;
+      localStorage.setItem('id',this.userId);
     });
     this.loginForm.controls['organizationName'].reset();
     // this.authToken = localStorage.getItem('token');
@@ -80,10 +88,6 @@ export class RepositoryPageComponent implements OnInit {
       this.securityService.removeToken();
       this.router.navigate(['/login']);
     });
-  }
-
-  OrgSearch() {
-
   }
 
   searchvisibility() {

@@ -27,6 +27,8 @@ export class RepositoryPageComponent implements OnInit {
   orgLogin: any;
   repoNameList: any;
   item: any;
+  orgLoginPlaceHolder:any;
+  orgNamePlaceHolder:any;
   // filters: string[] = ['Issue Analysis', 'PR Analysis', 'Branch Analysis'];
   filters: {
     name: string;
@@ -70,13 +72,14 @@ export class RepositoryPageComponent implements OnInit {
       localStorage.setItem('id',this.userId);
     });
     this.loginForm.controls['organizationName'].reset();
-    // this.authToken = localStorage.getItem('token');
-    // this.orgLogin = localStorage.getItem('orgLogin');
-    // this.http
-    //   .getOrgProfile(this.authToken, this.orgLogin)
-    //   .subscribe((orgProfile: any) => {
-    //     this.orgProfileData = orgProfile;
-    //   });
+    this.orgLoginPlaceHolder = localStorage.getItem('orgName');
+    if (!(this.orgLoginPlaceHolder == null)) {
+      debugger
+      this.loginForm.patchValue({
+        organizationName:this.orgLoginPlaceHolder,
+      })
+      //this.loginForm.controls.value['organizationName'] = this.orgLoginPlaceHolder;
+    }
 
   }
   getUserInfo(): Observable<any> {
@@ -111,6 +114,8 @@ export class RepositoryPageComponent implements OnInit {
   changeName(event: any) {
 
     this.orgLogin = this.organizationsData[event].node.login;
+    this.orgNamePlaceHolder = this.organizationsData[event].node.name;
     localStorage.setItem('orgLogin', this.orgLogin);
+    localStorage.setItem('orgName',this.orgNamePlaceHolder);
   }
 }

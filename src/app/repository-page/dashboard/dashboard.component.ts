@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
       this.securityService.removeToken();
       localStorage.removeItem('id');
       localStorage.removeItem('orgLogin');
+      localStorage.removeItem('orgName');
       this.router.navigate(['/']);
     });
   }

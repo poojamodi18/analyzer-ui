@@ -74,11 +74,9 @@ export class RepositoryPageComponent implements OnInit {
     this.loginForm.controls['organizationName'].reset();
     this.orgLoginPlaceHolder = localStorage.getItem('orgName');
     if (!(this.orgLoginPlaceHolder == null)) {
-      debugger
       this.loginForm.patchValue({
         organizationName:this.orgLoginPlaceHolder,
       })
-      //this.loginForm.controls.value['organizationName'] = this.orgLoginPlaceHolder;
     }
 
   }

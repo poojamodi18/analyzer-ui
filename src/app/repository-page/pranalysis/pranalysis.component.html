@@ -4,13 +4,19 @@
 
         
     
-    <h4>Is there any Pull Request where there is no activity since days
+    <h4>Idle Pull Request since days
         <input type="text" placeholder="Days" formControlName="ActivityPrDay" >
         <button class="btn btn-primary btn-sm" type="button" (click)="noActivityPR()">
-            GO
-        </button>  ?</h4>  
+            Search
+        </button>
+      
+        <button class="btn btn-primary btn-sm" type="button" (click)="noActivityPRTrend()">
+          Save Trend
+        </button>
+      
+        </h4>       
+      
         </form>
-
 
           <mat-form-field appearance="standard">
             <mat-label>Search</mat-label>
@@ -63,11 +69,17 @@
     </mat-tab>
     <mat-tab label="Unmerged Pull Request"  > <br>
         <form [formGroup]="fform2" >
-        <h4>Is there any PR which is not merged since days
+        <h4>Unmerged Pull Request since days
         <input type="text" placeholder="Days" formControlName="MergePrDay" >
         <button class="btn btn-primary btn-sm" type="button" (click)="unmergedPr()">
-            GO
-        </button>  ?</h4>  
+            Search
+        </button>
+      
+        <button class="btn btn-primary btn-sm" type="button" (click)="unmergedPrTrend()">
+          Save Trend
+        </button>
+
+        </h4>  
         </form> 
         <mat-form-field appearance="standard">
           <mat-label>Search</mat-label>

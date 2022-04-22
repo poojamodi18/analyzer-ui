@@ -29,6 +29,7 @@ export class RepositoryPageComponent implements OnInit {
   item: any;
   orgLoginPlaceHolder:any;
   orgNamePlaceHolder:any;
+  recentHistory:any;
   // filters: string[] = ['Issue Analysis', 'PR Analysis', 'Branch Analysis'];
   filters: {
     name: string;
@@ -60,6 +61,18 @@ export class RepositoryPageComponent implements OnInit {
     private router: Router, private httpService: HttpService) { }
 
   ngOnInit(): void {
+    this.userProfile()
+    this.loginForm.controls['organizationName'].reset();
+    this.orgLoginPlaceHolder = localStorage.getItem('orgName');
+    if (!(this.orgLoginPlaceHolder == null)) {
+      this.loginForm.patchValue({
+        organizationName:this.orgLoginPlaceHolder,
+      })
+    }
+
+  }
+
+  userProfile(){
     this.getUserInfo().subscribe(data => {
       if(data.name.length == 0){
         this.name = data.login;
@@ -70,16 +83,14 @@ export class RepositoryPageComponent implements OnInit {
       this.url = data.url;
       this.userId = data.id;
       localStorage.setItem('id',this.userId);
+      this.httpService.getRecentHistory().pipe().subscribe(((Data:any)=>{
+        this.recentHistory = _.merge([], Data.data);
+        console.log(Data.message);
+        console.log(JSON.stringify(Data.data));
+      }));
     });
-    this.loginForm.controls['organizationName'].reset();
-    this.orgLoginPlaceHolder = localStorage.getItem('orgName');
-    if (!(this.orgLoginPlaceHolder == null)) {
-      this.loginForm.patchValue({
-        organizationName:this.orgLoginPlaceHolder,
-      })
-    }
-
   }
+
   getUserInfo(): Observable<any> {
     return this.http.get(environment.baseUrl + '/v1/home');
   }

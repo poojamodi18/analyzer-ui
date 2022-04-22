@@ -17,6 +17,9 @@ export class HttpService {
   private AvgTimeP1 = '';
   private AvgTimeP2 = '';
   private defaultBranchUrl = '';
+  private getlabelsURL='';
+  private getlebelissueURL='';
+  private getTrendDetailsURL='';
 
   constructor(private http: HttpClient) { }
 
@@ -93,6 +96,38 @@ export class HttpService {
   public defaultBranch(orgLogin:any, jsonArr:any): Observable<any>{
     this.defaultBranchUrl = environment.baseUrl+'/org/'+orgLogin+'/defaultbranch';
     return this.http.post<any>(this.defaultBranchUrl,jsonArr);
+  }
+
+  // getting lables
+  public getlablesservice( authToken: any, orgLogin: any,repoListObject:any ){
+    debugger
+    this.getlabelsURL = environment.baseUrl+'/org/' + orgLogin + '/repo/labels';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': authToken,
+      })
+    };
+    return this.http.post<any>(this.getlabelsURL, repoListObject , httpOptions);
+  }
+  public getlebelissueservice( authToken: any, orgLogin: any,repoListObject:any, label : any ){
+    this.getlebelissueURL = environment.baseUrl+'/org/'+ orgLogin +'/repo/'+ label +'/openIssues';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': authToken,
+      })
+    };
+    return this.http.post<any>(this.getlebelissueURL, repoListObject , httpOptions);
+  }
+
+  public getTrendDetails(trendTitle:any){
+    this.getTrendDetailsURL = environment.baseUrl+'/trend/details/'+trendTitle;
+    return this.http.get(this.getTrendDetailsURL);
+  }
+
+  public getRecentHistory(){
+    return this.http.get(environment.baseUrl+'/v1/home/recentHistory');
   }
 
 }

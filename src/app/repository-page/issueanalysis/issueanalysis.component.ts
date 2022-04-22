@@ -39,6 +39,7 @@ export class IssueanalysisComponent implements OnInit {
   repoListObject: any;
   criticalIssueData: any;
   isLoading = false;
+  abc : any;
 
   criticalIssuesForm = new FormGroup({
     criticalIssues: new FormControl(''),
@@ -134,6 +135,33 @@ export class IssueanalysisComponent implements OnInit {
       .getAvgTimeP2(this.authToken, this.orgName)
       .subscribe((res: any) => {
         this.priorityTwo = res.message;
+      });
+  }
+  // get labels
+  getlabels(){
+    debugger
+    this.selectedRepoList = this.util.getCollectiveRepoData();
+    this.repoListObject = { repoNames: this.selectedRepoList };
+    this.authToken = localStorage.getItem('token');
+    this.orgName = localStorage.getItem('orgLogin');
+
+    this.http
+      .getlablesservice(this.authToken, this.orgName, this.repoListObject)
+      .subscribe((res: any) => {
+        this.abc = res.Labels;
+      });
+  }
+
+  getlebelissue(label : any){
+    this.selectedRepoList = this.util.getCollectiveRepoData();
+    this.repoListObject = { repoNames: this.selectedRepoList };
+    this.authToken = localStorage.getItem('token');
+    this.orgName = localStorage.getItem('orgLogin');
+
+    this.http
+      .getlebelissueservice(this.authToken, this.orgName, this.repoListObject, label)
+      .subscribe((res: any) => {
+        console.log(res.nodes);             
       });
   }
 }

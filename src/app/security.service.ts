@@ -31,6 +31,16 @@ export class SecurityService {
     return localStorage.getItem(this.tokenKey);
   }
 
+  getId(){
+    let id = localStorage.getItem('id');
+    if(id==null){
+      return '99999';
+    }
+    else{
+      return id;
+    }
+  }
+
   isLoggedIn(): boolean {
     const token = this.getToken();
     return token != null;

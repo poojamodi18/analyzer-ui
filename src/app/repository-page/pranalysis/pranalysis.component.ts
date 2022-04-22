@@ -7,6 +7,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import * as _ from 'lodash';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { SavetrendComponent } from '../savetrend/savetrend.component';
 
 
 interface repoList {
@@ -54,7 +56,7 @@ export class PranalysisComponent implements OnInit {
   @ViewChild('page2') paginator2: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('sort2') sort2: MatSort;
-  constructor(private http: HttpService, private util: UtilService, private toastr: ToastrService) { }
+  constructor(private http: HttpService, private util: UtilService, private toastr: ToastrService,public matDialog: MatDialog) { }
 
   //search filter for idle pr
   applyFilter(event: Event) {
@@ -118,6 +120,31 @@ export class PranalysisComponent implements OnInit {
           this.dataSource.sort = this.sort;
 
         });
+    }
+  }
+
+  noActivityPRTrend(){
+    this.selectedRepoList = this.util.getCollectiveRepoData();
+    this.repoListObject = { "repoNames": this.selectedRepoList };
+    this.activityPRDays = this.fform.value.ActivityPrDay;
+    if (this.selectedRepoList.length === 0) {
+      this.isLoading = false;
+      this.alertbox();
+    }else{
+      const openDialog = this.matDialog.open(SavetrendComponent, { disableClose: false, hasBackdrop: true ,data:{type:'idlePR'}});
+    }
+
+  }
+
+  unmergedPrTrend(){
+    this.selectedRepoList = this.util.getCollectiveRepoData();
+    this.repoListObject = { "repoNames": this.selectedRepoList };
+    this.activityPRDays = this.fform.value.ActivityPrDay;
+    if (this.selectedRepoList.length === 0) {
+      this.isLoading = false;
+      this.alertbox();
+    }else{
+      const openDialog = this.matDialog.open(SavetrendComponent, { disableClose: false, hasBackdrop: true ,data:{type:'unmergedPR'}});
     }
   }
   //for merged pr

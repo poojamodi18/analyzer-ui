@@ -33,6 +33,10 @@ import { AuthHeaderInterceptor } from './auth-header.interceptor';
 import { CallbackComponent } from './callback/callback.component';
 import { BranchanalysisComponent } from './repository-page/branchanalysis/branchanalysis.component';
 import { DashboardComponent } from './repository-page/dashboard/dashboard.component';
+import { SavetrendComponent } from './repository-page/savetrend/savetrend.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,7 @@ import { DashboardComponent } from './repository-page/dashboard/dashboard.compon
     ShowRepositoryComponent,
     AddrepositoryComponent, 
     IssueanalysisComponent,  
-    PranalysisComponent, CallbackComponent, BranchanalysisComponent, DashboardComponent 
+    PranalysisComponent, CallbackComponent, BranchanalysisComponent, DashboardComponent, SavetrendComponent 
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,10 @@ import { DashboardComponent } from './repository-page/dashboard/dashboard.compon
     MatPaginatorModule,
     MatSortModule,
     ToastrModule.forRoot(),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     {

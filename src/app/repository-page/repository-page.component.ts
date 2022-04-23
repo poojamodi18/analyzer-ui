@@ -30,6 +30,7 @@ export class RepositoryPageComponent implements OnInit {
   orgLoginPlaceHolder:any;
   orgNamePlaceHolder:any;
   recentHistory:any;
+  opened=true;
   // filters: string[] = ['Issue Analysis', 'PR Analysis', 'Branch Analysis'];
   filters: {
     name: string;
@@ -38,6 +39,10 @@ export class RepositoryPageComponent implements OnInit {
     {
         name: 'Dashboard',
         selected: true
+    },
+    {
+      name: 'Organization',
+      selected: false
     },
     {
         name: 'Issue Analysis',

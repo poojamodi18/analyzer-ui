@@ -1,11 +1,12 @@
 <mat-toolbar class="navigation">
 
+  <button class="btn btn-bar btn-lg" (click)="opened=!opened"><i class="fa fa-bars" aria-hidden="true"></i></button>
   <img src="\assets\images\app_logo.png" alt="App Name" height="55px" />
   <a href="#" class="name">Polyrepo</a>
   <span class="example-spacer"></span>
   <form [formGroup]="loginForm">
-    <input type="text" class = "orgName" id="searchOrganization" placeholder="Search Organization" matInput [matAutocomplete]="autoGroup" 
-      formControlName="organizationName" (keyup)="getOrganization()" size="30">
+    <input type="text" class="orgName" id="searchOrganization" placeholder="Search Organization" matInput
+      [matAutocomplete]="autoGroup" formControlName="organizationName" (keyup)="getOrganization()" size="30">
     <mat-autocomplete #autoGroup="matAutocomplete">
       <h1></h1>
       <mat-option *ngFor="let x of organizationsData; let i = index" [value]="x.node.name"
@@ -14,22 +15,20 @@
       </mat-option>
     </mat-autocomplete>
 
-    <button class="btn btn-primary btn1"  type="button" >
+    <button class="btn btn-primary btn1" type="button">
       Search
-  </button>
+    </button>
 
   </form>
 
   <span class="example-spacer"></span>
-  <a href="{{url}}" target="_blank" class="name" id="orgName">{{name}} </a><br/>
-  <img src="{{avatarUrl}}" alt="Avatar" height="75%"/>
+  <a href="{{url}}" target="_blank" class="name" id="orgName">{{name}} </a><br />
+  <img src="{{avatarUrl}}" alt="Avatar" height="75%" />
 </mat-toolbar>
 
 <div>
-  <div class="row" >
-    <div class="col-3">
-     
-      <!-- filter options -->
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" [(opened)]="opened">
       <div class="overflow-auto filtersettingdiv">
         <mat-selection-list #filterr [multiple]="false">
           <mat-list-option *ngFor="let filter of filters" [value]="filter.name" [selected]="filter.selected">
@@ -42,34 +41,41 @@
 
       <br />
 
-      <div class="repoList">
-        <app-show-repository></app-show-repository>
+     
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="row">
+        <div class="col-12 content">
+
+          <!-- Dashboard -->
+          <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Dashboard'">
+            <app-dashboard></app-dashboard>
+          </div>
+
+          <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Organization'">
+            <app-organization></app-organization>
+          </div>
+
+          <!-- issues analysis -->
+          <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Issue Analysis'">
+            <app-issueanalysis></app-issueanalysis>
+          </div>
+
+          <!-- pr analysis -->
+          <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'PR Analysis'">
+
+            <app-pranalysis></app-pranalysis>
+          </div>
+
+          <!-- Branch Analysis -->
+          <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Branch Analysis'">
+
+            <app-branchanalysis></app-branchanalysis>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="col-9 content">
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 
-      <!-- Dashboard -->
-      <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Dashboard'">
-        <app-dashboard></app-dashboard>
-      </div>
-
-      <!-- issues analysis -->
-      <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Issue Analysis'">
-        <app-issueanalysis></app-issueanalysis>
-      </div>
-
-      <!-- pr analysis -->
-      <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'PR Analysis'">
-
-        <app-pranalysis></app-pranalysis>
-      </div>
-
-      <!-- Branch Analysis -->
-      <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Branch Analysis'">
-
-        <app-branchanalysis></app-branchanalysis>
-      </div>
-    </div>
-  </div>
 </div>

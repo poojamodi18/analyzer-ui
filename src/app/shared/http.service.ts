@@ -102,23 +102,11 @@ export class HttpService {
   public getlablesservice( authToken: any, orgLogin: any,repoListObject:any ){
     debugger
     this.getlabelsURL = environment.baseUrl+'/org/' + orgLogin + '/repo/labels';
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Access-Control-Allow-Origin': '*',
-        'Authorization': authToken,
-      })
-    };
-    return this.http.post<any>(this.getlabelsURL, repoListObject , httpOptions);
+    return this.http.post<any>(this.getlabelsURL, repoListObject);
   }
   public getlebelissueservice( authToken: any, orgLogin: any,repoListObject:any, label : any ){
     this.getlebelissueURL = environment.baseUrl+'/org/'+ orgLogin +'/repo/'+ label +'/openIssues';
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Access-Control-Allow-Origin': '*',
-        'Authorization': authToken,
-      })
-    };
-    return this.http.post<any>(this.getlebelissueURL, repoListObject , httpOptions);
+    return this.http.post<any>(this.getlebelissueURL, repoListObject );
   }
 
   public getTrendDetails(trendTitle:any){

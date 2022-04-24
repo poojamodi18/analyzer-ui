@@ -3,7 +3,7 @@
     <mat-tab label="Critical Issue">
         <div class="criticalIssueList">
             <form [formGroup]="criticalIssuesForm" >
-                <h4>This will list all the Open Priority-1 issues across selected repositories open since  
+                <h4>Open Priority-1 issues across selected repositories open since  
                     <input type="number" formControlName="criticalIssues" > days.<button class="btn btn-primary criticalButton" (click)="criticalIssueList()">List</button></h4>  
             </form>
         </div>
@@ -72,28 +72,4 @@
         <p *ngIf="show == 'P2'">{{this.priorityTwo}}</p>
     </mat-tab>
     
-    <mat-tab label="Search By Label">
-      <button class="btn btn-primary btn-sm" (click)="getlabels()">hello</button>
-      <!-- <div *ngFor="let x of abc">
-        {{ x.name }}
-      </div> -->
-      <!-- <mat-form-field appearance="fill">
-        <mat-label>labels</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let x of abc" [value]="x.value">
-            {{x.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field> -->
-      <mat-nav-list>
-        <mat-list-item *ngFor="let link of abc">
-           {{ link.name }}
-           <button mat-icon-button (click)="getlebelissue(link.name)">
-              <mat-icon>info</mat-icon>
-           </button>
-        </mat-list-item>
-      </mat-nav-list>
-    </mat-tab>
-    
-    <!-- <mat-tab label="Issue Division"> Content 3 </mat-tab> -->
 </mat-tab-group>

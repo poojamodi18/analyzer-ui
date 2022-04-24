@@ -37,6 +37,9 @@ import { SavetrendComponent } from './repository-page/savetrend/savetrend.compon
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { OrganizationComponent } from './repository-page/organization/organization.component';
+import { RecentanalysisComponent } from './repository-page/recentanalysis/recentanalysis.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     ShowRepositoryComponent,
     AddrepositoryComponent, 
     IssueanalysisComponent,  
-    PranalysisComponent, CallbackComponent, BranchanalysisComponent, DashboardComponent, SavetrendComponent 
+    PranalysisComponent, CallbackComponent, BranchanalysisComponent, DashboardComponent, SavetrendComponent, OrganizationComponent, RecentanalysisComponent 
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatProgressSpinnerModule,
     MatIconModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSidenavModule
   ],
   providers: [
     {

@@ -1,38 +1,38 @@
-
-.btn{
+.btn {
     width: max-content;
 }
 
-.buttonRow{
+.buttonRow {
     justify-content: end;
     margin-top: 8%;
     margin-bottom: 5%;
 }
 
-.itemsRow{
+.itemsRow {
     margin-top: 5%;
     height: 300px;
     display: block;
-    *display:inline;zoom:1;
+    *display: inline;
+    zoom: 1;
 }
-.btn-group-sm>.btn, .btn-sm{
+
+.btn-group-sm>.btn,
+.btn-sm {
     padding: 0;
-    outline:0;
+    outline: 0;
     width: min-content;
 }
+
 .btn-sm:focus {
-    outline:0;
+    outline: 0;
 }
+
 button.btn.trash-btn {
     float: right;
     padding: 0;
     height: 10px;
 }
+
 .fa {
     color: rgb(185, 57, 57);
-  }
-  ::ng-deep .orgName{
-    width: 60%;
-    border-radius: 3px;
-    border: 1px solid gray;
-  }
+}

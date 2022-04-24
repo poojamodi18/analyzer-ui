@@ -19,17 +19,11 @@ export class RepositoryPageComponent implements OnInit {
   avatarUrl: any;
   url: any;
   userId: any;
-  orgName: any;
   authToken: any;
-  organizationsData: any;
-  isdisable: boolean = true;
-  orgProfileData: any;
-  orgLogin: any;
   repoNameList: any;
   item: any;
-  orgLoginPlaceHolder:any;
-  orgNamePlaceHolder:any;
   recentHistory:any;
+  opened=true;
   // filters: string[] = ['Issue Analysis', 'PR Analysis', 'Branch Analysis'];
   filters: {
     name: string;
@@ -38,6 +32,10 @@ export class RepositoryPageComponent implements OnInit {
     {
         name: 'Dashboard',
         selected: true
+    },
+    {
+      name: 'Organization',
+      selected: false
     },
     {
         name: 'Issue Analysis',
@@ -51,25 +49,19 @@ export class RepositoryPageComponent implements OnInit {
         name: 'Branch Analysis',
         selected: false
     },
+    {
+        name: 'Logout',
+        selected: false
+    }
     
 ];
-  loginForm = new FormGroup({
-    organizationName: new FormControl({ value: ' ' }),
-  });
+  
 
   constructor(private http: HttpClient, private securityService: SecurityService,
     private router: Router, private httpService: HttpService) { }
 
   ngOnInit(): void {
     this.userProfile()
-    this.loginForm.controls['organizationName'].reset();
-    this.orgLoginPlaceHolder = localStorage.getItem('orgName');
-    if (!(this.orgLoginPlaceHolder == null)) {
-      this.loginForm.patchValue({
-        organizationName:this.orgLoginPlaceHolder,
-      })
-    }
-
   }
 
   userProfile(){
@@ -98,33 +90,18 @@ export class RepositoryPageComponent implements OnInit {
   logout() {
     this.securityService.logout().subscribe(() => {
       this.securityService.removeToken();
-      this.router.navigate(['/login']);
+      localStorage.removeItem('id');
+      localStorage.removeItem('orgLogin');
+      localStorage.removeItem('orgName');
+      this.router.navigate(['/']);
     });
   }
 
-  searchvisibility() {
-    if (this.orgName == '') {
-      this.isdisable = true;
-    }
-    else {
-      this.isdisable = false;
+  onChangeSideNav(value){
+    let sel = value.option.selectionList._value[0];
+    if(sel=='Logout'){
+      this.logout()
     }
   }
 
-  public getOrganization() {
-    this.orgName = this.loginForm.value.organizationName;
-    if (this.orgName != '') {
-      this.httpService.getData(this.orgName)
-        .subscribe((orgNameData: any) => {
-          this.organizationsData = _.merge([], orgNameData.edges);
-        });
-    }
-  }
-  changeName(event: any) {
-
-    this.orgLogin = this.organizationsData[event].node.login;
-    this.orgNamePlaceHolder = this.organizationsData[event].node.name;
-    localStorage.setItem('orgLogin', this.orgLogin);
-    localStorage.setItem('orgName',this.orgNamePlaceHolder);
-  }
 }

@@ -56,7 +56,8 @@ export class PranalysisComponent implements OnInit {
   @ViewChild('page2') paginator2: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('sort2') sort2: MatSort;
-  constructor(private http: HttpService, private util: UtilService, private toastr: ToastrService,public matDialog: MatDialog) { }
+  constructor(private http: HttpService, private util: UtilService, 
+    private toastr: ToastrService,public matDialog: MatDialog) { }
 
   //search filter for idle pr
   applyFilter(event: Event) {

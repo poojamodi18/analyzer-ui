@@ -36,6 +36,11 @@
             <app-dashboard></app-dashboard>
           </div>
 
+          <!-- Recent Analysis -->
+          <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Recent Analysis'">
+            <app-recentanalysis></app-recentanalysis>
+          </div>
+
           <!-- Organization -->
           <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Organization'">
             <app-organization></app-organization>
@@ -47,7 +52,7 @@
           </div>
 
           <!-- pr analysis -->
-          <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'PR Analysis'">
+          <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Pull-Request Analysis'">
             <app-pranalysis></app-pranalysis>
           </div>
 

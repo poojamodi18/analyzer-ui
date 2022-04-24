@@ -22,40 +22,43 @@ export class RepositoryPageComponent implements OnInit {
   authToken: any;
   repoNameList: any;
   item: any;
-  recentHistory:any;
-  opened=true;
+  opened = true;
   // filters: string[] = ['Issue Analysis', 'PR Analysis', 'Branch Analysis'];
   filters: {
     name: string;
     selected: boolean;
-}[] = [
-    {
+  }[] = [
+      {
         name: 'Dashboard',
         selected: true
-    },
-    {
-      name: 'Organization',
-      selected: false
-    },
-    {
+      },
+      {
+        name: 'Recent Analysis',
+        selected: false
+      },
+      {
+        name: 'Organization',
+        selected: false
+      },
+      {
         name: 'Issue Analysis',
         selected: false
-    },
-    {
-        name: 'PR Analysis',
+      },
+      {
+        name: 'Pull-Request Analysis',
         selected: false
-    },
-    {
+      },
+      {
         name: 'Branch Analysis',
         selected: false
-    },
-    {
+      },
+      {
         name: 'Logout',
         selected: false
-    }
-    
-];
-  
+      }
+
+    ];
+
 
   constructor(private http: HttpClient, private securityService: SecurityService,
     private router: Router, private httpService: HttpService) { }
@@ -64,22 +67,18 @@ export class RepositoryPageComponent implements OnInit {
     this.userProfile()
   }
 
-  userProfile(){
+  userProfile() {
     this.getUserInfo().subscribe(data => {
-      if(data.name.length == 0){
+      if (data.name.length == 0) {
         this.name = data.login;
-      }else{
+      } else {
         this.name = data.name;
       }
       this.avatarUrl = data.avatarUrl;
       this.url = data.url;
       this.userId = data.id;
-      localStorage.setItem('id',this.userId);
-      this.httpService.getRecentHistory().pipe().subscribe(((Data:any)=>{
-        this.recentHistory = _.merge([], Data.data);
-        console.log(Data.message);
-        console.log(JSON.stringify(Data.data));
-      }));
+      localStorage.setItem('id', this.userId);
+      
     });
   }
 
@@ -97,9 +96,9 @@ export class RepositoryPageComponent implements OnInit {
     });
   }
 
-  onChangeSideNav(value){
+  onChangeSideNav(value) {
     let sel = value.option.selectionList._value[0];
-    if(sel=='Logout'){
+    if (sel == 'Logout') {
       this.logout()
     }
   }

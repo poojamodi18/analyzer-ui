@@ -40,6 +40,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { OrganizationComponent } from './repository-page/organization/organization.component';
 import { RecentanalysisComponent } from './repository-page/recentanalysis/recentanalysis.component';
+import { RecentresultComponent } from './repository-page/recentresult/recentresult.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { RecentanalysisComponent } from './repository-page/recentanalysis/recent
     ShowRepositoryComponent,
     AddrepositoryComponent, 
     IssueanalysisComponent,  
-    PranalysisComponent, CallbackComponent, BranchanalysisComponent, DashboardComponent, SavetrendComponent, OrganizationComponent, RecentanalysisComponent 
+    PranalysisComponent, CallbackComponent, BranchanalysisComponent, DashboardComponent, SavetrendComponent, OrganizationComponent, RecentanalysisComponent, RecentresultComponent 
   ],
   imports: [
     BrowserModule,

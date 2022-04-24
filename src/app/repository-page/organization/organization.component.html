@@ -1,4 +1,51 @@
-<p>organization works!</p>
-<div class="repoList">
-    <app-show-repository></app-show-repository>
+<div class="container">
+    <div class="row">
+        <div class="col-12 orgSearchDiv">
+            <form [formGroup]="loginForm">
+                <input type="text" class="orgName" id="searchOrganization" placeholder="Search Organization" matInput
+                  [matAutocomplete]="autoGroup" formControlName="organizationName" (keyup)="getOrganization()" size="30">
+                <mat-autocomplete #autoGroup="matAutocomplete">
+                  <h1></h1>
+                  <mat-option *ngFor="let x of organizationsData; let i = index" [value]="x.node.name"
+                    (onSelectionChange)="changeName(i)">
+                    <p>{{x.node.name}}</p>
+                  </mat-option>
+                </mat-autocomplete>
+            
+                <button class="btn btn-primary btn1" type="button" (click)="getOrgProfile()">
+                  Search
+                </button>
+            
+              </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8 repolistDiv">
+          <h4>Repositories</h4>
+            <div class="repoList" *ngIf="isRepoDiv">
+                <app-show-repository></app-show-repository>
+            </div>
+        </div>
+        <div class="col-3">
+          <div *ngIf="isPresent" class="orgDetaile" >
+            <div class="row">
+                <div class="col-8">
+                    <a href="{{orgProfileData.organization.url}}" target="_blank" class="profileName">{{orgProfileData.organization.name}}</a>
+                </div>
+                <div class="col-4">
+                    <img src="{{orgProfileData.organization.avatarUrl}}" alt="Avatar" id="orgAvatar"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <p>{{orgProfileData.organization.description}}</p>
+                </div>
+            </div>
+            
+            
+          </div>
+        </div>
+    </div>
 </div>
+

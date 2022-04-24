@@ -4,22 +4,7 @@
   <img src="\assets\images\app_logo.png" alt="App Name" height="55px" />
   <a href="#" class="name">Polyrepo</a>
   <span class="example-spacer"></span>
-  <form [formGroup]="loginForm">
-    <input type="text" class="orgName" id="searchOrganization" placeholder="Search Organization" matInput
-      [matAutocomplete]="autoGroup" formControlName="organizationName" (keyup)="getOrganization()" size="30">
-    <mat-autocomplete #autoGroup="matAutocomplete">
-      <h1></h1>
-      <mat-option *ngFor="let x of organizationsData; let i = index" [value]="x.node.name"
-        (onSelectionChange)="changeName(i)">
-        <p>{{x.node.name}}</p>
-      </mat-option>
-    </mat-autocomplete>
-
-    <button class="btn btn-primary btn1" type="button">
-      Search
-    </button>
-
-  </form>
+  
 
   <span class="example-spacer"></span>
   <a href="{{url}}" target="_blank" class="name" id="orgName">{{name}} </a><br />
@@ -30,8 +15,8 @@
   <mat-sidenav-container>
     <mat-sidenav mode="side" [(opened)]="opened">
       <div class="overflow-auto filtersettingdiv">
-        <mat-selection-list #filterr [multiple]="false">
-          <mat-list-option *ngFor="let filter of filters" [value]="filter.name" [selected]="filter.selected">
+        <mat-selection-list #filterr [multiple]="false" (selectionChange)="onChangeSideNav($event)">
+          <mat-list-option *ngFor="let filter of filters" [value]="filter.name" [selected]="filter.selected" >
             <span style="font-size: 17px">
               {{ filter.name }}
             </span>
@@ -41,7 +26,6 @@
 
       <br />
 
-     
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="row">
@@ -52,6 +36,7 @@
             <app-dashboard></app-dashboard>
           </div>
 
+          <!-- Organization -->
           <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Organization'">
             <app-organization></app-organization>
           </div>
@@ -63,15 +48,15 @@
 
           <!-- pr analysis -->
           <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'PR Analysis'">
-
             <app-pranalysis></app-pranalysis>
           </div>
 
           <!-- Branch Analysis -->
           <div *ngIf="filterr.selectedOptions.selected[0]?.value == 'Branch Analysis'">
-
             <app-branchanalysis></app-branchanalysis>
           </div>
+
+
         </div>
       </div>
 

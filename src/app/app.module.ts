@@ -39,6 +39,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { OrganizationComponent } from './repository-page/organization/organization.component';
+import { RecentanalysisComponent } from './repository-page/recentanalysis/recentanalysis.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { OrganizationComponent } from './repository-page/organization/organizati
     ShowRepositoryComponent,
     AddrepositoryComponent, 
     IssueanalysisComponent,  
-    PranalysisComponent, CallbackComponent, BranchanalysisComponent, DashboardComponent, SavetrendComponent, OrganizationComponent 
+    PranalysisComponent, CallbackComponent, BranchanalysisComponent, DashboardComponent, SavetrendComponent, OrganizationComponent, RecentanalysisComponent 
   ],
   imports: [
     BrowserModule,

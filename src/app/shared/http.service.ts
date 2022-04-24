@@ -27,13 +27,9 @@ export class HttpService {
     return this.http.get(environment.baseUrl+'/org/'+orgName);
   }
 
-  public getOrgProfile(authToken: any, orgLogin: any) {
+  public getOrgProfile(orgLogin: any) {
     this.OrgProfileUrl = environment.baseUrl+'/org/' + orgLogin + '/orgProfile';
-    return this.http.get(this.OrgProfileUrl, {
-      headers: new HttpHeaders({
-        Authorization: authToken,
-      }),
-    });
+    return this.http.get(this.OrgProfileUrl);
   }
 
   public getRepoList(orgLogin: any) {
@@ -60,13 +56,7 @@ export class HttpService {
   // critical issues
   public getcriticalIssue(authToken: any, orgLogin: any, days: any,repoListObject:any){
     this.criticalIssue = environment.baseUrl+'/org/'+orgLogin+'/repo/issuesWithPriority1/openSinceBefore/'+days ;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Access-Control-Allow-Origin': '*',
-        'Authorization': authToken,
-      })
-    };
-    return this.http.post<any>(this.criticalIssue, repoListObject, httpOptions);
+    return this.http.post<any>(this.criticalIssue, repoListObject, );
   }
 
   // average resolving time for Priority-1 isuues

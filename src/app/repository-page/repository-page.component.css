@@ -1,22 +1,27 @@
-mat-sidenav-container{
+mat-sidenav-container {
   /* height: 100%; */
 }
-mat-sidenav, mat-sidenav-content {
+
+mat-sidenav,
+mat-sidenav-content {
   padding: 6px;
 }
-mat-sidenav{
-  width: 24%;
+
+mat-sidenav {
+  width: 20%;
   box-shadow: 1px 1px 10px rgba(161, 161, 161, 0.9);
 }
 
 .btn-bar:active {
-  outline:none;
+  outline: none;
   box-shadow: none;
 }
+
 .btn-bar:focus {
-  outline:none;
+  outline: none;
   box-shadow: none;
 }
+
 .name {
   color: #664983;
   padding-left: 15px;
@@ -26,12 +31,6 @@ mat-sidenav{
   font-family: "Bahnschrift";
 }
 
-.repoList {
-  border-radius: 10px;
-  box-shadow: 1px 1px 10px rgba(161, 161, 161, 0.9);
-  padding: 1%;
-  height: 62%;
-}
 
 .filtersettingdiv {
   /* border-radius: 10px; */
@@ -57,37 +56,31 @@ mat-toolbar {
   box-shadow: 0px 1px 10px rgba(161, 161, 161, 0.9) !important;
 }
 
-body{
+body {
   height: 100%;
   overflow: hidden !important;
 }
 
-.content{
+.content {
   margin-top: -0.5%;
   margin-left: 0.48%;
   border-radius: 10px;
   box-shadow: 0px 1px 10px rgba(161, 161, 161, 0.9);
   height: 43em;
   min-height: 40em;
-  overflow-y:scroll;
+  overflow-y: scroll;
 }
 
-.row{
+.row {
   padding: 1% 1%;
   width: 100%;
 }
 
-input{
+input {
   margin-right: 20px;
 }
 
-.btn1{
-padding-left: 40px;
-padding-right:40px ;
-}
-
-::ng-deep .orgName{
-  width: 60%;
-  border-radius: 3px;
-  border: 1px solid gray;
+.btn1 {
+  padding-left: 40px;
+  padding-right: 40px;
 }

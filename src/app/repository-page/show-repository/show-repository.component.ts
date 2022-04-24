@@ -30,6 +30,7 @@ export class ShowRepositoryComponent implements OnInit {
   jsonArr: any = [];
   repoListObject: any;
   repoName!: string;
+  onLoadRepoList:repoList[] = [];
   nameOfItem: repoList[] = [];
   
 
@@ -38,6 +39,10 @@ export class ShowRepositoryComponent implements OnInit {
   ngOnInit(): void {
     this.authToken = localStorage.getItem('token');
     this.orgLogin = localStorage.getItem('orgLogin');
+    this.onLoadRepoList = this.util.getCollectiveRepoData();
+    if(this.onLoadRepoList.length >0){
+      this.nameOfItem = this.onLoadRepoList;
+    }
   }
 
   openDialog() {

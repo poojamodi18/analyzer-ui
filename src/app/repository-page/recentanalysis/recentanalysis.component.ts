@@ -22,7 +22,7 @@ export interface recent {
   styleUrls: ['./recentanalysis.component.css']
 })
 export class RecentanalysisComponent implements OnInit {
-  displayedColumns: string[] = ['title', 'date', 'Result','Save'];
+  displayedColumns: string[] = ['title', 'date', 'Result'];
   dataSource!: MatTableDataSource<recent>;
   orgLogin: any;
   repoListObject: any;
@@ -33,6 +33,7 @@ export class RecentanalysisComponent implements OnInit {
   });
   @ViewChild('page1') paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  
   constructor(private http: HttpService, private util: UtilService, private toastr: ToastrService, public matDialog: MatDialog) { }
 
   //search filter for idle pr
@@ -47,6 +48,9 @@ export class RecentanalysisComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHisotry();
+    // this.dataSource.filterPredicate = function (record,filter) {
+    //   return record.title.toLocaleLowerCase() == filter.toLocaleLowerCase();
+    // }
   }
 
   getHisotry() {
@@ -74,8 +78,5 @@ export class RecentanalysisComponent implements OnInit {
     const openDialog = this.matDialog.open(RecentresultComponent, { disableClose: false, hasBackdrop: true, data: { query: querydata } });
   }
 
-  saveToDashBoard(querydata:any){
-
-  }
 
 }

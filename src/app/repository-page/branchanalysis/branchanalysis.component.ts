@@ -83,7 +83,6 @@ export class BranchanalysisComponent implements OnInit {
           });
           this.isLoading=false;
           this.dataSource = new MatTableDataSource<defaultBranch>(this.defaultBranchList);
-          debugger
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
 

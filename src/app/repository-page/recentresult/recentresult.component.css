@@ -1,0 +1,27 @@
+.load{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background: white;
+}
+.mat-progress-spinner ::ng-deep circle {
+    stroke: #2A79FF;
+}
+::ng-deep .mat-tab-label-content {
+    font-size: large;
+}
+h4{
+    font-size: large;
+    margin-bottom: 0px;
+}
+a {
+    color:black;
+    text-decoration: none;
+}
+th{
+    font-size: medium;
+}
+
+.container {
+    overflow-y: auto;
+  }

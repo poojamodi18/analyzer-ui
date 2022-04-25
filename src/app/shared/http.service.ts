@@ -108,4 +108,8 @@ export class HttpService {
     return this.http.get(environment.baseUrl+'/v1/home/recentHistory');
   }
 
+  public getRecentResult(type:any,query:any){
+    return this.http.post<any>(environment.baseUrl+'/history/'+type,query);
+  }
+
 }

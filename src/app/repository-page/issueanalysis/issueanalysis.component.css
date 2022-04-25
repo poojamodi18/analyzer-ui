@@ -1,6 +1,6 @@
 .criticalButton{
     /* float: right; */
-    margin-left: 5%;
+    margin-left: 0.5%;
 }
 
 .avgTime{
@@ -26,4 +26,14 @@ h4{
 }
 .mat-progress-spinner ::ng-deep circle {
     stroke: #2A79FF;
+}
+::ng-deep .mat-tab-label-content {
+    font-size: large;
+}
+th{
+    font-size: medium;
+}
+a {
+    color:black;
+    text-decoration: none;
 }

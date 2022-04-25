@@ -79,7 +79,7 @@ import { RecentresultComponent } from './repository-page/recentresult/recentresu
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSidenavModule
+    MatSidenavModule,
   ],
   providers: [
     {

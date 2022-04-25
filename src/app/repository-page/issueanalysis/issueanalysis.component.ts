@@ -29,7 +29,7 @@ export interface issueData {
 })
 export class IssueanalysisComponent implements OnInit {
   dataSource!: MatTableDataSource<issueData>;
-  displayedColumns: string[] = ['title', 'createdAt', 'repository','authorLogin'];
+  displayedColumns: string[] = ['title', 'createdAt', 'repository', 'authorLogin'];
   authToken: any;
   orgName: any;
   days: any;
@@ -40,7 +40,7 @@ export class IssueanalysisComponent implements OnInit {
   repoListObject: any;
   criticalIssueData: any;
   isLoading = false;
-  abc : any;
+  abc: any;
 
   criticalIssuesForm = new FormGroup({
     criticalIssues: new FormControl(''),
@@ -56,9 +56,9 @@ export class IssueanalysisComponent implements OnInit {
     public http: HttpService,
     private util: UtilService,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   // TAB-1
 
@@ -79,40 +79,51 @@ export class IssueanalysisComponent implements OnInit {
     this.days = this.criticalIssuesForm.value.criticalIssues;
     this.selectedRepoList = this.util.getCollectiveRepoData();
     this.repoListObject = { repoNames: this.selectedRepoList };
-    if (this.selectedRepoList.length === 0) {
+    if (this.days == '') {
       this.isLoading = false;
-      this.toastr.error('Please select repository', 'No Repository', {
+      this.toastr.error('Please enter days', 'No days available', {
         positionClass: 'toast-top-center',
         closeButton: true,
         easeTime: 250,
       });
-    } else {
-      this.http
-        .getcriticalIssue(
-          this.authToken,
-          this.orgName,
-          this.days,
-          this.repoListObject
-        )
-        .subscribe((res) => {
-          res = _.merge([], res.edges);
-          this.criticalIssueData = res.map((x: any) => {
-            return {
-              title: x.node.title,
-              createdAt: x.node.createdAt,
-              repository: x.node.repository.name,
-              authorLogin: x.node.author.login,
-              authorUrl: x.node.author.url,
-            };
-          });
-          this.isLoading = false;
-          this.dataSource = new MatTableDataSource<issueData>(
-            this.criticalIssueData
-          );
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
-        });
     }
+    else {
+      if (this.selectedRepoList.length === 0) {
+        this.isLoading = false;
+        this.toastr.error('Please select repository', 'No Repository', {
+          positionClass: 'toast-top-center',
+          closeButton: true,
+          easeTime: 250,
+        });
+      } else {
+        this.http
+          .getcriticalIssue(
+            this.authToken,
+            this.orgName,
+            this.days,
+            this.repoListObject
+          )
+          .subscribe((res) => {
+            res = _.merge([], res.edges);
+            this.criticalIssueData = res.map((x: any) => {
+              return {
+                title: x.node.title,
+                createdAt: x.node.createdAt,
+                repository: x.node.repository.name,
+                authorLogin: x.node.author.login,
+                authorUrl: x.node.author.url,
+              };
+            });
+            this.isLoading = false;
+            this.dataSource = new MatTableDataSource<issueData>(
+              this.criticalIssueData
+            );
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+          });
+      }
+    }
+
   }
 
   // TAB-2
@@ -141,7 +152,7 @@ export class IssueanalysisComponent implements OnInit {
       });
   }
   // get labels
-  getlabels(){
+  getlabels() {
     debugger
     this.selectedRepoList = this.util.getCollectiveRepoData();
     this.repoListObject = { repoNames: this.selectedRepoList };
@@ -155,7 +166,7 @@ export class IssueanalysisComponent implements OnInit {
       });
   }
 
-  getlebelissue(label : any){
+  getlebelissue(label: any) {
     this.selectedRepoList = this.util.getCollectiveRepoData();
     this.repoListObject = { repoNames: this.selectedRepoList };
     this.authToken = localStorage.getItem('token');
@@ -164,7 +175,7 @@ export class IssueanalysisComponent implements OnInit {
     this.http
       .getlebelissueservice(this.authToken, this.orgName, this.repoListObject, label)
       .subscribe((res: any) => {
-        console.log(res.nodes);             
+        console.log(res.nodes);
       });
   }
 }

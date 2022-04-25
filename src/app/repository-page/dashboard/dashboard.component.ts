@@ -19,7 +19,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   
-    
+    this.http.getCommonTrend().subscribe((data:any)=>{
+      
+    });
     
   }
 

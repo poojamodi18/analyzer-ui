@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpService } from 'app/shared/http.service';
 import { UtilService } from 'app/shared/util.service';
+import { data } from 'jquery';
 import * as _ from 'lodash';
 
 @Component({
@@ -39,6 +40,7 @@ export class OrganizationComponent implements OnInit {
         organizationName:this.orgLoginPlaceHolder,
       })
     }
+   
   }
   public getOrganization() {
     this.orgName = this.loginForm.value.organizationName;

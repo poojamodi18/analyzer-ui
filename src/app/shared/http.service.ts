@@ -112,4 +112,8 @@ export class HttpService {
     return this.http.post<any>(environment.baseUrl+'/history/'+type,query);
   }
 
+  public getCommonTrend(){
+    return this.http.get(environment.baseUrl+'/v1/home/commonTrend');
+  }
+
 }

@@ -4,8 +4,8 @@
 
         
     
-    <h4>Idle Pull Request since days
-        <input type="number" placeholder="Days" formControlName="ActivityPrDay" >
+    <h4>Idle Pull Request since
+        <input type="number" placeholder="days" formControlName="ActivityPrDay" >
         <button class="btn btn-primary btn-sm" type="button" (click)="noActivityPR()">
             Search
         </button>
@@ -62,15 +62,15 @@
               <mat-progress-spinner mode="indeterminate" diameter="70">
               </mat-progress-spinner>
             </div>
-            <mat-paginator #page1 [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons aria-label="Select page of users"></mat-paginator>
+            <mat-paginator #page1 [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons aria-label="Select page of pull-request"></mat-paginator>
         </div>
        
           
     </mat-tab>
     <mat-tab label="Unmerged Pull Request"  > <br>
         <form [formGroup]="fform2" >
-        <h4>Unmerged Pull Request since days
-        <input type="number" placeholder="Days" formControlName="MergePrDay" >
+        <h4>Unmerged Pull Request since 
+        <input type="number" placeholder="days" formControlName="MergePrDay" >
         <button class="btn btn-primary btn-sm" type="button" (click)="unmergedPr()">
             Search
         </button>
@@ -125,7 +125,7 @@
             <mat-progress-spinner mode="indeterminate" diameter="70">
             </mat-progress-spinner>
           </div>
-          <mat-paginator #page2 [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons aria-label="Select page of users"></mat-paginator>
+          <mat-paginator #page2 [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons aria-label="Select page of pull-request"></mat-paginator>
       </div>
       
       </mat-tab>

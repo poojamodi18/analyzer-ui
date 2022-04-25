@@ -41,6 +41,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { OrganizationComponent } from './repository-page/organization/organization.component';
 import { RecentanalysisComponent } from './repository-page/recentanalysis/recentanalysis.component';
 import { RecentresultComponent } from './repository-page/recentresult/recentresult.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { RecentresultComponent } from './repository-page/recentresult/recentresu
     MatDatepickerModule,
     MatNativeDateModule,
     MatSidenavModule,
+    ChartsModule,
   ],
   providers: [
     {

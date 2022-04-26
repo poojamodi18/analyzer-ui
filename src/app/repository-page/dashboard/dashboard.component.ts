@@ -22,7 +22,8 @@ export class DashboardComponent implements OnInit {
   public barChartLegend = true;
   public barChartData = [
     {data:[65,34,67,89,56,45,37],label:'Series A'},
-    {data:[54,44,34,91,25,56,71],label:'Series B'}
+    {data:[54,44,34,91,25,56,71],label:'Series B'},
+    {data:[14,41,44,14,24,36,88],label:'Series C'}
   ];
 
   constructor( private securityService: SecurityService,

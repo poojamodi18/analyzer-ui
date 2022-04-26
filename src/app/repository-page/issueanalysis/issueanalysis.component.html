@@ -67,6 +67,10 @@
                     <button class="btn btn-primary btn-sm avgTime" (click)="show = 'P1'; avg1()">Priority-1</button>or
                     <button class="btn btn-primary btn-sm avgTime" (click)="show = 'P2'; avg2()">Priority-2</button> issues?</h4>   
             </form>
+            <div *ngIf="isLoading" class="load">
+              <mat-progress-spinner mode="indeterminate" diameter="70">
+              </mat-progress-spinner>
+            </div>
         </div>
         <p *ngIf="show == 'P1'">{{this.priorityOne}}</p>
         <p *ngIf="show == 'P2'">{{this.priorityTwo}}</p>

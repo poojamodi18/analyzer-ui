@@ -130,6 +130,7 @@ export class IssueanalysisComponent implements OnInit {
 
   // average time for priority-1 issues
   avg1() {
+    this.isLoading = true;
     this.authToken = localStorage.getItem('token');
     this.orgName = localStorage.getItem('orgLogin');
 
@@ -137,11 +138,13 @@ export class IssueanalysisComponent implements OnInit {
       .getAvgTimeP1(this.authToken, this.orgName)
       .subscribe((res: any) => {
         this.priorityOne = res.message;
+        this.isLoading =false;
       });
   }
 
   // average time for priority-2 issues
   avg2() {
+    this.isLoading = true;
     this.authToken = localStorage.getItem('token');
     this.orgName = localStorage.getItem('orgLogin');
 
@@ -149,6 +152,7 @@ export class IssueanalysisComponent implements OnInit {
       .getAvgTimeP2(this.authToken, this.orgName)
       .subscribe((res: any) => {
         this.priorityTwo = res.message;
+        this.isLoading = false;
       });
   }
   // get labels

@@ -1,56 +1,72 @@
+::ng-deep .mat-tab-label-content {
+    font-size: large;
+}
+
+mat-toolbar {
+    padding-top: 0.5%;
+}
+
 .orgName {
     width: 65.8%;
     border-radius: 5px;
-    border: 1px solid rgba(161, 161, 161, 0.9); 
-    z-index:1000; 
+    border: 1px solid rgba(161, 161, 161, 0.9);
+    z-index: 1000;
 }
 
 input {
     margin-right: 20px;
     height: 40px;
     border: 1px solid rgba(161, 161, 161, 0.9);
-    z-index:1000; 
+    z-index: 1000;
 }
 
 .btn1 {
     padding-left: 40px;
     padding-right: 40px;
 }
-.orgSearchDiv{
+
+.orgSearchDiv {
     margin-top: 2%;
 }
-.repolistDiv{
+
+.repolistDiv {
     margin-top: 2%;
 }
-.orgDetaile{
+
+.orgDetaile {
     margin-top: 25%;
 }
+
 .repoList {
     border-radius: 10px;
     box-shadow: 1px 1px 10px rgba(161, 161, 161, 0.9);
     padding: 1%;
     height: 90%;
 }
-.orgDetaile{
+
+.orgDetaile {
     border-radius: 10px;
     box-shadow: 1px 1px 10px rgba(161, 161, 161, 0.9);
     padding: 5%;
 }
-h4{
+
+h4 {
     font-size: medium;
 }
-.container{
+
+.container {
     margin-left: 0.7%;
     padding: 0;
-    width: 99%;
+    width: 98%;
 }
 
-#orgAvatar{
+#orgAvatar {
     height: 100%;
     width: 100%;
     border-radius: 50%;
 }
-.profileName{
+
+.profileName {
     padding-left: 5%;
     padding-top: 5%;
     font-size: large;

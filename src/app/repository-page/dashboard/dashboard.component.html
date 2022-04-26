@@ -2,14 +2,18 @@
 <mat-tab-group>
     <mat-tab label="Trend Analysis"> <br>
 
-        <button>Refresh</button>
+        <button class="btn btn-primary btn-sm" (click)="reload()" style="margin-left: 10px;">Refresh</button>
         <h4>
         </h4>
 
+
         <div>
-            <div style="display:block;">
-            
-                <canvas baseChart
+            <div *ngIf="isLoading" class="load">
+                <mat-progress-spinner mode="indeterminate" diameter="70">
+                </mat-progress-spinner>
+              </div>
+            <div style="display:block; height: 90%; width: 90%;">
+                <canvas *ngIf="isShow" baseChart
                     [datasets]="barChartData"
                     [labels]="barChartLabels"
                     [options]="barChartOptions"

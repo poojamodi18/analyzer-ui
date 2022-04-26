@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SecurityService } from 'app/security.service';
 import { HttpService } from 'app/shared/http.service';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,33 +12,50 @@ import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 })
 export class DashboardComponent implements OnInit {
 
-  recentHistory:any;
-  public barChartOptions ={
-    scaleShowVerticalLines : false,
-    responsive : true
-  }
-
-  public barChartLabels = ['2006','2007','2008','2009','2010','2011','2012'];
-  public barChartType : ChartType ='bar';
+  recentHistory: any;
+  public barChartOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true,
+    showToolTips: true
+  };
+  isLoading = false;
+  isShow = false;
+  public label = [];
+  public dataSource: any;
+  public barChartLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'Today'];
+  public barChartType: ChartType = 'bar';
   public barChartLegend = true;
-  public barChartData = [
-    {data:[65,34,67,89,56,45,37],label:'Series A'},
-    {data:[54,44,34,91,25,56,71],label:'Series B'},
-    {data:[14,41,44,14,24,36,88],label:'Series C'}
-  ];
+  public barChartData : ChartDataSets[] = [];
 
-  constructor( private securityService: SecurityService,
-  private router: Router, private http: HttpService) { }
+
+  constructor(private securityService: SecurityService,
+    private router: Router, private http: HttpService) { }
 
   ngOnInit(): void {
-  
-    this.http.getCommonTrend().subscribe((data:any)=>{
-      console.log(JSON.stringify(data));
-      
-    });
-    
+    this.reload();
+
   }
 
-  
+  reload(){
+    this.isLoading = true;
+    this.isShow = false;
+    this.http.getCommonTrend().subscribe((data: any) => {
+
+      console.log(data.org_Today.userCount);
+      this.barChartData = [
+        { data: [data.org_Jan.userCount, data.org_Feb.userCount, data.org_Mar.userCount, data.org_Apr.userCount, data.org_Today.userCount], label: 'Organization' },
+        { data: [data.user_Jan.userCount, data.user_Feb.userCount, data.user_Mar.userCount, data.user_Apr.userCount, data.user_Today.userCount], label: 'User' },
+        { data: [data.repo_Jan.repositoryCount, data.repo_Feb.repositoryCount, data.repo_Mar.repositoryCount, data.repo_Apr.repositoryCount, data.repo_Today.repositoryCount], label: 'Repository' },
+        { data: [data.issue_Jan.issueCount, data.issue_Feb.issueCount, data.issue_Mar.issueCount, data.issue_Apr.issueCount, data.issue_Today.issueCount], label: 'Issue' },
+        { data: [data.dis_Jan.discussionCount, data.dis_Feb.discussionCount, data.dis_Mar.discussionCount, data.dis_Apr.discussionCount, data.dis_Today.discussionCount], label: 'Discussion' }
+      ];
+      this.isLoading = false;
+      this.isShow = true;
+
+    });
+
+  }
+
+
 
 }

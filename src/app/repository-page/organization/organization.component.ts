@@ -4,6 +4,7 @@ import { HttpService } from 'app/shared/http.service';
 import { UtilService } from 'app/shared/util.service';
 import { data } from 'jquery';
 import * as _ from 'lodash';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-organization',
@@ -25,7 +26,7 @@ export class OrganizationComponent implements OnInit {
     organizationName: new FormControl({ value: ' ' }),
   });
 
-  constructor(private http:HttpService, private util: UtilService) { }
+  constructor(private http:HttpService, private util: UtilService,private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.loginForm.controls['organizationName'].reset();
@@ -54,13 +55,24 @@ export class OrganizationComponent implements OnInit {
   getOrgProfile(){
     this.isRepoDiv = false;
     let login = localStorage.getItem('orgLogin');
-    this.http.getOrgProfile(login).subscribe((profileData:any)=>{
-      this.orgProfileData = profileData;
-      this.isPresent=true;
-      this.util.setCollectiveRepoData([]);
-      this.isRepoDiv = true;
-    });
 
+    if(login=='' || login==null ){
+      this.toastr.error('Please enter organization', 'No organization available', {
+        positionClass: 'toast-top-center',
+        closeButton: true,
+        easeTime: 250,
+      });
+      this.isRepoDiv = true;
+    }else{
+      this.http.getOrgProfile(login).subscribe((profileData:any)=>{
+        this.orgProfileData = profileData;
+        this.isPresent=true;
+        this.util.setCollectiveRepoData([]);
+        this.isRepoDiv = true;
+      });
+  
+    }
+    
   }
   changeName(event: any) {
 

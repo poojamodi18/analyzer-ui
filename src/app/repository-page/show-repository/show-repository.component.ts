@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../shared/http.service';
 import * as _ from 'lodash';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,7 +6,7 @@ import { AddrepositoryComponent } from '../addrepository/addrepository.component
 import { UtilService } from '../../shared/util.service';
 import { ToastrService } from 'ngx-toastr';
 
-interface repoList {
+interface RepoList {
   id: string;
   name: string;
 }
@@ -30,8 +30,8 @@ export class ShowRepositoryComponent implements OnInit {
   jsonArr: any = [];
   repoListObject: any;
   repoName!: string;
-  onLoadRepoList:repoList[] = [];
-  nameOfItem: repoList[] = [];
+  onLoadRepoList:RepoList[] = [];
+  nameOfItem: RepoList[] = [];
   
 
   constructor(private http: HttpService, public matDialog: MatDialog, private util: UtilService,  private toastr: ToastrService) { }

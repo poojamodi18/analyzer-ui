@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 
-interface repoList {
+interface RepoList {
   id: string;
   name: string;
 }
@@ -10,7 +10,7 @@ interface repoList {
   providedIn: 'root'
 })
 export class UtilService {
-  selectedRepoList: repoList[] = [];
+  selectedRepoList: RepoList[] = [];
   constructor(private util: HttpClient) { }
 
   //set data from showrepository

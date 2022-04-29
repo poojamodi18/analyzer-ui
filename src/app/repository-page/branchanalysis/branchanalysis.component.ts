@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, FormControlName, Validator, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { HttpService } from '../../shared/http.service';
 import { UtilService } from '../../shared/util.service';
 import { MatPaginator } from '@angular/material/paginator';
@@ -8,11 +8,11 @@ import { MatSort } from '@angular/material/sort';
 import * as _ from 'lodash';
 import { ToastrService } from 'ngx-toastr';
 
-interface repoList {
+interface RepoList {
   id: string;
   name: string;
 }
-export interface defaultBranch {
+export interface DefaultBranch {
   repository: any;
   defaultBranch: any;
   createdAt: any;
@@ -26,12 +26,12 @@ export interface defaultBranch {
 })
 export class BranchanalysisComponent implements OnInit {
   displayedColumns: string[] = ['defaultBranch', 'repository', 'createdAt'];
-  dataSource!: MatTableDataSource<defaultBranch>;
+  dataSource!: MatTableDataSource<DefaultBranch>;
   orgLogin: any;
   repoListObject: any;
   isLoading = false;
   defaultBranchList: any;
-  selectedRepoList: repoList[] = [];
+  selectedRepoList: RepoList[] = [];
   fform = new FormGroup({
   });
   @ViewChild('page1') paginator: MatPaginator;
@@ -82,8 +82,8 @@ export class BranchanalysisComponent implements OnInit {
               url: x.url,
             }
           });
-          this.isLoading=false;
-          this.dataSource = new MatTableDataSource<defaultBranch>(this.defaultBranchList);
+          this.isLoading = false;
+          this.dataSource = new MatTableDataSource<DefaultBranch>(this.defaultBranchList);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
 

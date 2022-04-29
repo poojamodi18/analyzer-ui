@@ -19,10 +19,10 @@ input {
     text-decoration: none;
     text-align: center;
     font-size: 150%;
-    font-family: "Bahnschrift";
+    font-family: "Bahnschrift, sans-serif";
 }
 b{
-    font-family: "Bahnschrift";
+    font-family: "Bahnschrift, sans-serif";
 }
 
 .fa-1x {
@@ -50,7 +50,7 @@ mat-toolbar {
 /* body */
 .a {
     text-align: center;
-    font-family: bahnschrift;
+    font-family: bahnschrift, sans-serif;
     font-size: 68px;
     padding-top: 120px;
     white-space: normal;

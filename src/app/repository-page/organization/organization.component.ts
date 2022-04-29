@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpService } from 'app/shared/http.service';
 import { UtilService } from 'app/shared/util.service';
-import { data } from 'jquery';
 import * as _ from 'lodash';
 import { ToastrService } from 'ngx-toastr';
 
@@ -31,7 +30,7 @@ export class OrganizationComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm.controls['organizationName'].reset();
     this.orgLoginPlaceHolder = localStorage.getItem('orgName');
-    if (!(this.orgLoginPlaceHolder == null)) {
+    if (this.orgLoginPlaceHolder != null) {
       let log = localStorage.getItem('orgLogin');
       this.http.getOrgProfile(log).subscribe((profileData:any)=>{
         this.orgProfileData = profileData;

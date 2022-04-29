@@ -1,11 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 import { SecurityService } from 'app/security.service';
 import { Router } from '@angular/router';
-import * as _ from 'lodash';
-import { FormControl, FormGroup } from '@angular/forms';
 import { HttpService } from 'app/shared/http.service';
 
 @Component({

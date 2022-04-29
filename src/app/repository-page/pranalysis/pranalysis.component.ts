@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, FormControlName, Validator, Validators } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { HttpService } from '../../shared/http.service';
 import { UtilService } from '../../shared/util.service';
 import { MatPaginator } from '@angular/material/paginator';
@@ -12,18 +12,18 @@ import { SavetrendComponent } from '../savetrend/savetrend.component';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
-interface repoList {
+interface RepoList {
   id: string;
   name: string;
 }
-export interface pullRequestData {
+export interface PullRequestData {
   authorLogin: any;
   repository: any;
   title: any;
   updatedAt: any;
 }
 
-export interface unmergedPRData {
+export interface UnmergedPRData {
   authorLogin: any;
   repository: any;
   title: any;
@@ -37,8 +37,8 @@ export interface unmergedPRData {
 export class PranalysisComponent implements OnInit {
   displayedColumns: string[] = ['title', 'updatedAt', 'repository', 'authorLogin'];
   displayedColumns2: string[] = ['title', 'createdAt', 'repository', 'authorLogin'];
-  dataSource!: MatTableDataSource<pullRequestData>;
-  unmergeddataSource!: MatTableDataSource<unmergedPRData>;
+  dataSource!: MatTableDataSource<PullRequestData>;
+  unmergeddataSource!: MatTableDataSource<UnmergedPRData>;
   orgLogin: any;
   repoListObject: any;
   activityPRDays: any;
@@ -46,7 +46,7 @@ export class PranalysisComponent implements OnInit {
   prLastActivity: any;
   unmergedPRActivity: any;
   isLoading = false;
-  selectedRepoList: repoList[] = [];
+  selectedRepoList: RepoList[] = [];
   fform = new FormGroup({
     ActivityPrDay: new FormControl('',),
   });
@@ -129,7 +129,7 @@ export class PranalysisComponent implements OnInit {
               }
             });
             this.isLoading = false;
-            this.dataSource = new MatTableDataSource<pullRequestData>(this.prLastActivity);
+            this.dataSource = new MatTableDataSource<PullRequestData>(this.prLastActivity);
             this.dataSource.paginator = this.paginator;
             this.dataSource.sort = this.sort;
 
@@ -195,7 +195,7 @@ export class PranalysisComponent implements OnInit {
               }
             });
             this.isLoading = false;
-            this.unmergeddataSource = new MatTableDataSource<unmergedPRData>(this.unmergedPRActivity);
+            this.unmergeddataSource = new MatTableDataSource<UnmergedPRData>(this.unmergedPRActivity);
             this.unmergeddataSource.paginator = this.paginator2;
             this.unmergeddataSource.sort = this.sort2;
           });

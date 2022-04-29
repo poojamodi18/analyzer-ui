@@ -10,9 +10,10 @@
           Search
         </button>
 
-        <!-- <button class="btn btn-primary btn-sm" type="button" (click)="noActivityPRTrend()">
-          Save Trend
-        </button> -->
+        <button class="btn btn-primary btn-sm" type="button" (click)="openPDF()">
+          Donwload Results
+        </button>
+
 
       </h4>
 
@@ -23,8 +24,8 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
     </mat-form-field>
 
-    <div class="mat-elevation-z8 ">
-      <table mat-table [dataSource]="dataSource" matSort style="width:100%;">
+    <div class="mat-elevation-z8 " id="htmlData">
+      <table mat-table [dataSource]="dataSource" matSort style="width:100%;" >
 
         <!-- Pull Request Column -->
         <ng-container matColumnDef="title">

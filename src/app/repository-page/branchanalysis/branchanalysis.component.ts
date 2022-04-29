@@ -49,6 +49,7 @@ export class BranchanalysisComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.orgLogin = localStorage.getItem('orgLogin');
   }
   //toast alert
   alertbox() {

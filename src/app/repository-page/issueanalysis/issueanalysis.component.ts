@@ -51,7 +51,9 @@ export class IssueanalysisComponent implements OnInit {
     private toastr: ToastrService
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.orgName = localStorage.getItem('orgLogin');
+   }
 
   // TAB-1
 
@@ -67,7 +69,6 @@ export class IssueanalysisComponent implements OnInit {
 
   criticalIssueList() {
     this.isLoading = true;
-    this.authToken = localStorage.getItem('token');
     this.orgName = localStorage.getItem('orgLogin');
     this.days = this.criticalIssuesForm.value.criticalIssues;
     this.selectedRepoList = this.util.getCollectiveRepoData();

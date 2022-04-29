@@ -81,6 +81,7 @@ export class PranalysisComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.selectedRepoList = this.util.getCollectiveRepoData();
   }
   //toast alert
   alertbox() {

@@ -33,10 +33,6 @@ input {
     margin-top: 2%;
 }
 
-.orgDetaile {
-    margin-top: 25%;
-}
-
 .repoList {
     border-radius: 10px;
     box-shadow: 1px 1px 10px rgba(161, 161, 161, 0.9);
@@ -45,6 +41,7 @@ input {
 }
 
 .orgDetaile {
+    margin-top: 25%;
     border-radius: 10px;
     box-shadow: 1px 1px 10px rgba(161, 161, 161, 0.9);
     padding: 5%;

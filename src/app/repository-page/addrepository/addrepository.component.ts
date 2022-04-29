@@ -97,7 +97,6 @@ export class AddrepositoryComponent implements OnInit {
 
   // selected values
   onItemSelect(item: any) {
-    // this.selectedI += JSON.parse(item);
 
     if (!this.contains(this.jsonArr, "name", item.name)) {
       this.jsonArr.push(item);
@@ -170,7 +169,6 @@ export class AddrepositoryComponent implements OnInit {
 
   //selected repository from auto-complete
   setRepoToSelected(repoindex: any){
-    let temprepo = this.repositoryListByName[repoindex].node;
     if (!this.contains(this.jsonArr, "name", this.repositoryListByName[repoindex].node.name)) {
       this.jsonArr.push(this.repositoryListByName[repoindex].node);
     }

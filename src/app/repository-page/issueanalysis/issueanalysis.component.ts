@@ -8,7 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ToastrService } from 'ngx-toastr';
 
-export interface issueData {
+export interface IssueData {
   title: any;
   createdAt: any;
   repository: any;
@@ -21,7 +21,7 @@ export interface issueData {
   styleUrls: ['./issueanalysis.component.css'],
 })
 export class IssueanalysisComponent implements OnInit {
-  dataSource!: MatTableDataSource<issueData>;
+  dataSource!: MatTableDataSource<IssueData>;
   displayedColumns: string[] = ['title', 'createdAt', 'repository', 'authorLogin'];
   authToken: any;
   orgName: any;
@@ -109,7 +109,7 @@ export class IssueanalysisComponent implements OnInit {
               };
             });
             this.isLoading = false;
-            this.dataSource = new MatTableDataSource<issueData>(
+            this.dataSource = new MatTableDataSource<IssueData>(
               this.criticalIssueData
             );
             this.dataSource.paginator = this.paginator;

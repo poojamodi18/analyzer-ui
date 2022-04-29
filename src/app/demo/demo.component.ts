@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../shared/http.service';
 import { Observable } from 'rxjs';
-import * as _ from 'lodash';
 import { ToastrService } from 'ngx-toastr';
 import { SecurityService } from 'app/security.service';
 @Component({

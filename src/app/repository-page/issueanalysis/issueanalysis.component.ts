@@ -1,15 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgModule } from '@angular/core';
 import { HttpService } from '../../shared/http.service';
 import { UtilService } from '../../shared/util.service';
 import * as _ from 'lodash';
-import {
-  FormGroup,
-  FormControl,
-  FormControlName,
-  Validator,
-  Validators,
-} from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -138,7 +131,7 @@ export class IssueanalysisComponent implements OnInit {
       .getAvgTimeP1(this.authToken, this.orgName)
       .subscribe((res: any) => {
         this.priorityOne = res.message;
-        this.isLoading =false;
+        this.isLoading = false;
       });
   }
 

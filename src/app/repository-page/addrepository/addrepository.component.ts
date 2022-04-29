@@ -18,7 +18,6 @@ export class AddrepositoryComponent implements OnInit {
   orgLogin: any;
   selectedI: any = [];
   TemprepoNameList: any;
-  //loading = false;
   isNextPage: boolean = false;
   nextPageHash!: string;
   loading: boolean = false;

@@ -4,10 +4,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatListModule} from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule,FormsModule } from '@angular/forms'
 import { MatGridListModule } from '@angular/material/grid-list';
 import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'
 import { MatDialogModule } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';

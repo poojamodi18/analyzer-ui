@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SecurityService } from 'app/security.service';
 import { HttpService } from 'app/shared/http.service';
-import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import * as _ from 'lodash';
+import { ChartType, ChartDataSets } from 'chart.js';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../shared/http.service';
 import * as _ from 'lodash';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Item } from 'angular2-multiselect-dropdown';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-addrepository',
   templateUrl: './addrepository.component.html',

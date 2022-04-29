@@ -10,7 +10,7 @@ import * as _ from 'lodash';
 import { ToastrService } from 'ngx-toastr';
 import { RecentresultComponent } from '../recentresult/recentresult.component';
 
-export interface recent {
+export interface Recent {
   id: any;
   title: any;
   query: any;
@@ -23,7 +23,7 @@ export interface recent {
 })
 export class RecentanalysisComponent implements OnInit {
   displayedColumns: string[] = ['title', 'date', 'Result'];
-  dataSource!: MatTableDataSource<recent>;
+  dataSource!: MatTableDataSource<Recent>;
   orgLogin: any;
   repoListObject: any;
   isLoading = false;
@@ -65,7 +65,7 @@ export class RecentanalysisComponent implements OnInit {
         }
       });
       this.isLoading = false;
-      this.dataSource = new MatTableDataSource<recent>(this.recentHistory);
+      this.dataSource = new MatTableDataSource<Recent>(this.recentHistory);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     }));

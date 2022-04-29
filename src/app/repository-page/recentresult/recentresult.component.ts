@@ -6,26 +6,26 @@ import { MatTableDataSource } from '@angular/material/table';
 import { HttpService } from 'app/shared/http.service';
 import * as _ from 'lodash';
 
-export interface defaultBranch {
+export interface DefaultBranch {
   repository: any;
   defaultBranch: any;
   createdAt: any;
   url: any;
 }
-export interface issueData {
+export interface IssueData {
   title: any;
   createdAt: any;
   repository: any;
   authorLogin: any;
 }
-export interface pullRequestData {
+export interface PullRequestData {
   authorLogin: any;
   repository: any;
   title: any;
   updatedAt: any;
 }
 
-export interface unmergedPRData {
+export interface UnmergedPRData {
   authorLogin: any;
   repository: any;
   title: any;
@@ -97,7 +97,7 @@ export class RecentresultComponent implements OnInit {
           }
         });
         this.isLoading=false;
-        this.dataSource = new MatTableDataSource<pullRequestData>(this.recentData);
+        this.dataSource = new MatTableDataSource<PullRequestData>(this.recentData);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.isLoading = false;
@@ -116,7 +116,7 @@ export class RecentresultComponent implements OnInit {
           }
         });
         this.isLoading = false;
-        this.dataSource = new MatTableDataSource<unmergedPRData>(this.recentData);
+        this.dataSource = new MatTableDataSource<UnmergedPRData>(this.recentData);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.isLoading = false;
@@ -135,7 +135,7 @@ export class RecentresultComponent implements OnInit {
           };
         });
         this.isLoading = false;
-        this.dataSource = new MatTableDataSource<issueData>(this.recentData);
+        this.dataSource = new MatTableDataSource<IssueData>(this.recentData);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.isLoading = false;
@@ -161,7 +161,7 @@ export class RecentresultComponent implements OnInit {
           }
         });
         this.isLoading = false;
-        this.dataSource = new MatTableDataSource<defaultBranch>(this.recentData);
+        this.dataSource = new MatTableDataSource<DefaultBranch>(this.recentData);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.isLoading = false;

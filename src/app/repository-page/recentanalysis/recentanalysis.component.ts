@@ -55,6 +55,7 @@ export class RecentanalysisComponent implements OnInit {
 
   getHisotry() {
     this.http.getRecentHistory().subscribe(((Data: any) => {
+      console.log(Data);
       this.recentHistory = _.merge([], Data);
       this.recentHistory = this.recentHistory.map((x: any) => {
         return {

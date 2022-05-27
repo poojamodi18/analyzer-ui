@@ -205,7 +205,7 @@ export class PranalysisComponent implements OnInit {
   public openPDF(): void {
     let DATA: any = document.getElementById('htmlData');
     html2canvas(DATA).then((canvas) => {
-      let fileWidth = 208;
+      let fileWidth = 205;
       let fileHeight = (canvas.height * fileWidth) / canvas.width;
       const FILEURI = canvas.toDataURL('image/png');
       let PDF = new jsPDF('p', 'mm', 'a4');
